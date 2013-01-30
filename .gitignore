@@ -164,6 +164,7 @@ pip-log.txt
 
 # NetBeans specific #
 nbproject/private/
+nbproject/project.properties
 build/
 nbbuild/
 dist/
