@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -27,6 +28,12 @@ public class CompetenceProfile implements Serializable {
      */
     private float years;
     
+    /**
+     * 
+     */
+    @ManyToOne
+    private Competence competence;
+    
     /***************
      * GET and SET * 
      ***************/
@@ -41,6 +48,14 @@ public class CompetenceProfile implements Serializable {
     }
     public void setYears(float years) {
         this.years = years;
+    }
+
+    public Competence getCompetenceType() {
+        return competence;
+    }
+
+    public void setCompetenceType(Competence competence) {
+        this.competence = competence;
     }
     
     /**
@@ -80,5 +95,4 @@ public class CompetenceProfile implements Serializable {
     public String toString() {
         return "Persistence.CompetenceProfile[ id=" + id + " ]";
     }
-    
 }

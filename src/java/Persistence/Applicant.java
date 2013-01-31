@@ -17,7 +17,7 @@ import javax.persistence.OneToMany;
  * @author Jocke
  */
 @Entity
-public class Applicant extends Person implements Serializable {
+public class Applicant extends Person implements Serializable, ApplicantDTO {
     private static final long serialVersionUID = 1L;
     
     /**
@@ -82,6 +82,14 @@ public class Applicant extends Person implements Serializable {
     public void setCompetence(List<CompetenceProfile> competence) {
         this.competence = competence;
     }
+    @Override
+    public List<AvailabilityDTO> getAvailabilityDTO() {
+        return null;
+    }
+    @Override
+    public List<CompetenceProfileDTO> getCompetenceDTO() {
+        return null;
+    }
     
     /**
      * Generates a hash code
@@ -120,5 +128,4 @@ public class Applicant extends Person implements Serializable {
     public String toString() {
         return "Persistence.Applicant[ id=" + id + " ]";
     }
-    
 }
