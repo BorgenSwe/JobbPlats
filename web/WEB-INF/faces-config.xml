@@ -14,8 +14,8 @@
             <supported-locale>en</supported-locale>
         </locale-config>
         <resource-bundle>
-            <base-name>Labels</base-name>
-            <var>lab</var>
+            <base-name>Text</base-name>
+            <var>text</var>
         </resource-bundle>
     </application>
     
