@@ -16,9 +16,22 @@ import java.io.Serializable;
 @SessionScoped
 public class RegistrationManager implements Serializable {
 
+    @EJB
+    RegistrationBean registrationBean;
+    
+    RegistrationDTOImpl registrationDTO;
+    
     /**
      * Creates a new instance of RegistrationManager
      */
     public RegistrationManager() {
+        
+    }
+    
+    public String getSurname() {
+        return registrationDTO.surname;
+    }
+    public void setSurname(String surname) {
+        registrationDTO.surname = surname;
     }
 }
