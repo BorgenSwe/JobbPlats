@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
  * @author Jocke
  */
 @Entity
-public class CompetenceProfile implements Serializable {
+public class CompetenceProfile implements Serializable, CompetenceProfileDTO {
     private static final long serialVersionUID = 1L;
     
     /**

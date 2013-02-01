@@ -7,10 +7,15 @@ package Persistence;
 import java.io.Serializable;
 import java.util.Map;
 import javax.faces.context.FacesContext;
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapKeyColumn;
 
 /**
  * This entity represent a type of competence available in the system.
@@ -32,6 +37,10 @@ public class Competence implements Serializable, CompetenceDTO {
      * The map is used for internationalization. The key is the locale code("sv"
      * for swedish and "en" for english).
      */
+    @ElementCollection(fetch=FetchType.EAGER)
+    @MapKeyColumn(name = "language", insertable = false, updatable = false)
+    @CollectionTable(name = "competence_multilingual_string_map", 
+                     joinColumns = @JoinColumn(name = "string_id"))
     private Map<String, String> name;
     
     /***************

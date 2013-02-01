@@ -10,5 +10,5 @@ import java.util.List;
  */
 public interface RegistrationDOA {
     public void register(RegistrationDTO registration);
-    public List<Competence> getAllComptences();
+    public List<CompetenceDTO> getAllComptences();
 }

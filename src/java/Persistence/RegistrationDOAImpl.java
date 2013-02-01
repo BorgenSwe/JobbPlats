@@ -50,7 +50,7 @@ public class RegistrationDOAImpl implements RegistrationDOA{
     }
 
     @Override
-    public List<Competence> getAllComptences() {
+    public List<CompetenceDTO> getAllComptences() {
         return (List)new ArrayList<CompetenceDTO>();
     }
 }

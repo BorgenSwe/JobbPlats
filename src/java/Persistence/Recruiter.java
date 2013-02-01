@@ -11,7 +11,7 @@ import javax.persistence.Id;
  * @author Jocke
  */
 @Entity
-public class Recruiter extends Person implements Serializable {
+public class Recruiter extends Person implements Serializable, RecruiterDTO {
     private static final long serialVersionUID = 1L;
     
     /**

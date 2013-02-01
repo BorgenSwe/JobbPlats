@@ -16,7 +16,7 @@ import javax.persistence.Temporal;
  * @author Jocke
  */
 @Entity
-public class Availability implements Serializable {
+public class Availability implements Serializable, AvailabilityDTO {
     private static final long serialVersionUID = 1L;
     
     /**

@@ -6,7 +6,7 @@ package Persistence;
  * and Recruiter
  * @author Jocke
  */
-public abstract class Person {
+public abstract class Person implements PersonDTO {
     /**
      * First name of the person 
      */
