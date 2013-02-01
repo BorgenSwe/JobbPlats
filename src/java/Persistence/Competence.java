@@ -34,11 +34,12 @@ public class Competence implements Serializable, CompetenceDTO {
      * The map is used for internationalization. The key is the locale code( for 
      * example "sv" for swedish and "en" for english).
      */
-    @ElementCollection(fetch=FetchType.EAGER)
+    /*@ElementCollection(fetch=FetchType.EAGER)
     @MapKeyColumn(name = "language", insertable = false, updatable = false)
     @CollectionTable(name = "competence_multilingual_string_map", 
                      joinColumns = @JoinColumn(name = "string_id"))
-    private Map<String, String> name;
+    private Map<String, String> name;*/
+    private String name;
     
     /***************
      * GET and SET * 
@@ -49,7 +50,8 @@ public class Competence implements Serializable, CompetenceDTO {
     }
     @Override
     public String getName() {
-        return name.get(FacesContext.getCurrentInstance().getViewRoot().getLocale().toString());
+        //return name.get(FacesContext.getCurrentInstance().getViewRoot().getLocale().toString());
+        return name;
     }
 
     /**
