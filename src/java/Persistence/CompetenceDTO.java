@@ -1,14 +1,14 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Persistence;
 
 /**
- *
+ * Public interface of the 
  * @author Jocke
  */
 public interface CompetenceDTO {
+    /***************
+     * GET and SET * 
+     ***************/
     public Long getId();
     public String getName();
 }

@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Persistence;
 
 import java.io.Serializable;
@@ -34,8 +31,8 @@ public class Competence implements Serializable, CompetenceDTO {
 
     /**
      * Name of the competence type. 
-     * The map is used for internationalization. The key is the locale code("sv"
-     * for swedish and "en" for english).
+     * The map is used for internationalization. The key is the locale code( for 
+     * example "sv" for swedish and "en" for english).
      */
     @ElementCollection(fetch=FetchType.EAGER)
     @MapKeyColumn(name = "language", insertable = false, updatable = false)

@@ -52,18 +52,21 @@ public class Applicant extends Person implements Serializable, ApplicantDTO {
     /***************
      * GET and SET * 
      ***************/
+    @Override
     public Long getId() {
         return id;
     }
     public void setId(Long id) {
         this.id = id;
     }
+    @Override
     public String getSsn() {
         return ssn;
     }
     public void setSsn(String ssn) {
         this.ssn = ssn;
     }
+    @Override
     public String getEmail() {
         return email;
     }

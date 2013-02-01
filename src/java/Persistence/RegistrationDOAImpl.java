@@ -6,9 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
- *
+ * 
  * @author Jocke
  */
 public class RegistrationDOAImpl implements RegistrationDOA{
@@ -16,8 +17,15 @@ public class RegistrationDOAImpl implements RegistrationDOA{
     @PersistenceContext(unitName = "JobbPlatsPU")
     private EntityManager em;
     
+    /**
+     * Register the applicant in the RegistrationDTO object and stores it in the 
+     * data base. 
+     * @param registration The registration to store.
+     * @throws InvalidCompetenceException If the registration contains invalid 
+     * competences.
+     */
     @Override
-    public void register(RegistrationDTO registration) {
+    public void register(RegistrationDTO registration) throws InvalidCompetenceException{
         Applicant applicant = new Applicant();
         applicant.setName(registration.getName());
         applicant.setSurname(registration.getSurname());
@@ -31,8 +39,9 @@ public class RegistrationDOAImpl implements RegistrationDOA{
             CompetenceProfile newCompetenceProfile = new CompetenceProfile();
             newCompetenceProfile.setYears(tempComptenceProfile.getYears());
             Competence realCompetence = em.find(Competence.class, tempComptenceProfile.getId());
-            //if(realCompetence == null)
-                //Throw exception
+            if(realCompetence == null) {
+                throw new InvalidCompetenceException("One or more of the competences id does not correspond with the Database");
+            }
             newCompetenceProfile.setCompetenceType(realCompetence);
             competences.add(newCompetenceProfile);
         }
@@ -49,8 +58,14 @@ public class RegistrationDOAImpl implements RegistrationDOA{
         em.persist(applicant);
     }
 
+    /**
+     * Retrieves and returns all competence types from storage.
+     * @return List of competences.
+     */
     @Override
     public List<CompetenceDTO> getAllComptences() {
-        return (List)new ArrayList<CompetenceDTO>();
+        Query query = em.createQuery(
+           "select c from Competence c");
+        return query.getResultList(); 
     }
 }
