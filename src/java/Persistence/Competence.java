@@ -5,10 +5,13 @@
 package Persistence;
 
 import java.io.Serializable;
+import java.util.Map;
+import javax.faces.context.FacesContext;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * This entity represent a type of competence available in the system.
@@ -26,9 +29,12 @@ public class Competence implements Serializable {
     private Long id;
 
     /**
-     * Name of the competence type
+     * Name of the competence type. 
+     * The map is used for internationalization. The key is the locale code("sv"
+     * for swedish and "en" for english).
      */
-    private String name;
+    @OneToMany
+    private Map<String, String> name;
     
     /***************
      * GET and SET * 
@@ -37,7 +43,7 @@ public class Competence implements Serializable {
         return id;
     }
     public String getName() {
-        return name;
+        return name.get(FacesContext.getCurrentInstance().getViewRoot().getLocale().toString());
     }
 
     /**
