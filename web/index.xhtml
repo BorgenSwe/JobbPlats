@@ -6,54 +6,83 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:c="http://java.sun.com/jsp/jstl/core">
     <h:head>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="registration.js"></script>
+        <link rel="stylesheet" type="text/css" href="registration.css" />
         <title>#{text.title}</title>
     </h:head>
     <h:body>
-        <h1>#{text.title}</h1>
-        <h:form>
-            
-            <h:outputLabel value="#{text.surname}" for="surname" />
-            <h:inputText id="surname" value="#{registrationManager.surname}" />
-            <br/>
-            
-            <h:outputLabel value="#{text.firstName}" for="name" />
-            <h:inputText id="name" value="#{registrationManager.name}" />
-            <br/>
-            
-            <h:outputLabel value="#{text.email}" for="email" />
-            <h:inputText id="email" value="#{registrationManager.email}" />
-            <br/>
-            
-            <h:outputLabel value="#{text.ssn}" for="ssn" />
-            <h:inputText id="sn" value="#{registrationManager.ssn}" />
-            <br/>
-            
-            <!-- Competence -->
-            <h:outputLabel value="#{text.competence}" for="competence1" />
-            <h:selectOneMenu id="competence1" value="#{registrationManager.competence}">
-                <c:forEach var="element" items="#{registrationManager.competenceNames}">
-                    <f:selectItem itemLabel="#{element.competence}" itemValue="#{element.competence}" />
-                </c:forEach>
-            </h:selectOneMenu>
-            
-            <h:outputLabel value="#{text.competenceYears}" for="competence1Years" />
-            <h:inputText id="competence1Years" value="#{registrationManager.competence}" />
-            <br/>
-            
-            <!-- Availability -->
-            <h:outputLabel value="#{text.availability}" for="availability1" />
-            <h:inputText id="availability1" value="#{registrationManager.availability}" />
-            
-            <h:outputLabel value="#{text.availabilityFrom}" for="availability1From" />
-            <h:inputText id="availability1From" value="#{registrationManager.availability}" />
-            
-            <h:outputLabel value="#{text.availabilityTo}" for="availability1To" />
-            <h:inputText id="availability1To" value="#{registrationManager.availability}" />
-            <br/>
-            
-            <!-- Buttons -->
-            <h:commandButton value="#{text.submit}" action="success"/>
-       
-        </h:form> 
+        <div id="content">
+            <h1>#{text.title}</h1>
+            <h:form>
+                <!-- Personuppgifter -->
+                <div class="section" id="personInfo">
+                    <h2>Personuppgifter</h2>
+                    <table>
+                        <tr>
+                            <td class="labelColumn"><h:outputLabel value="#{text.surname}" for="surname" /></td>
+                            <td class="inputColumn"><h:inputText id="surname" value="#{registrationManager.surname}" /></td>
+                        </tr>
+                        <tr>
+                            <td class="labelColumn"><h:outputLabel value="#{text.firstName}" for="name" /></td>
+                            <td class="inputColumn"><h:inputText id="name" value="#{registrationManager.name}" /></td>
+                        </tr>
+                        <tr>
+                            <td class="labelColumn"><h:outputLabel value="#{text.email}" for="email" /></td>
+                            <td class="inputColumn"><h:inputText id="email" value="#{registrationManager.email}" /></td>
+                        </tr>
+                        <tr>
+                            <td class="labelColumn"><h:outputLabel value="#{text.ssn}" for="ssn" /></td>
+                            <td class="inputColumn"><h:inputText id="sn" value="#{registrationManager.ssn}" /></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Competence -->
+                <div class="section" id="competenceInfo">
+                    <h2>#{text.competence}</h2>
+                    
+                    <!-- Loop igenom kompetensarrayen -->
+                    <c:forEach var="ix" begin="0" end="9" step="1">
+                        <div class="competenceRow">
+                            <h:outputLabel value="#{text.competence}" for="competence#{ix}" />
+
+                            <!-- Kombobox för detta kompetensindex -->
+                            <h:selectOneMenu id="competence#{ix}" value="#{registrationManager.competenceProfileDTO[ix].selectedCompetence}">
+                                <c:forEach var="element" items="#{registrationManager.competenceNames}">
+                                    <f:selectItem itemLabel="#{element.name}" itemValue="#{element.id}" />
+                                </c:forEach>
+                            </h:selectOneMenu>
+
+                            <!-- År för detta kompetensindex -->
+                            <h:outputLabel value="#{text.competenceYears}" for="competence#{ix}Years" />
+                            <h:inputText id="competence#{ix}Years" value="#{registrationManager.competenceProfileDTO[ix].years}" />
+                        </div>
+                    </c:forEach>
+                    
+                    <a href="#" class="addLink" id="addCompetence"></a>
+                </div>
+
+                <!-- Availability -->
+                <div class="section" id="availabilityInfo">
+                    <h2>#{text.availability}</h2>
+                    
+                    <div class="availabilityRow">
+                        <h:outputLabel value="#{text.availabilityFrom}" for="availability1From" />
+                        <h:inputText id="availability1From" value="#{registrationManager.availability}" />
+
+                        <h:outputLabel value="#{text.availabilityTo}" for="availability1To" />
+                        <h:inputText id="availability1To" value="#{registrationManager.availability}" />
+                    </div>
+                    
+                    <a href="#" class="addLink" id="addAvailability"></a>
+                </div>
+               
+                <!-- Buttons -->
+                <div class="section" id="controlButtons">
+                    <h:commandButton value="#{text.submit}" action="success"/>
+                </div>
+            </h:form>
+        </div>
     </h:body>
 </html>

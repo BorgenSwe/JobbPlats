@@ -1,0 +1,73 @@
+/* 
+    Document   : registration
+    Created on : Feb 1, 2013, 1:55:28 PM
+    Author     : Jonas
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+body {
+background: #78bdd0; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #78bdd0 0%, #99cedd 59%, #afdbe7 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#78bdd0), color-stop(59%,#99cedd), color-stop(100%,#afdbe7)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(-45deg,  #78bdd0 0%,#99cedd 59%,#afdbe7 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(-45deg,  #78bdd0 0%,#99cedd 59%,#afdbe7 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(-45deg,  #78bdd0 0%,#99cedd 59%,#afdbe7 100%); /* IE10+ */
+background: linear-gradient(135deg,  #78bdd0 0%,#99cedd 59%,#afdbe7 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#78bdd0', endColorstr='#afdbe7',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+
+#content {
+    width:450px;
+    margin: 0px auto 0px auto;
+    font-family: Arial;
+    
+}
+
+/* Generellt för varje sektion */
+.section {
+    padding:10px;
+    background: #add9e4; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #add9e4 0%, #d9edf2 60%, #f7fbfc 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#add9e4), color-stop(60%,#d9edf2), color-stop(100%,#f7fbfc)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(-45deg,  #add9e4 0%,#d9edf2 60%,#f7fbfc 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(-45deg,  #add9e4 0%,#d9edf2 60%,#f7fbfc 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(-45deg,  #add9e4 0%,#d9edf2 60%,#f7fbfc 100%); /* IE10+ */
+background: linear-gradient(135deg,  #add9e4 0%,#d9edf2 60%,#f7fbfc 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#add9e4', endColorstr='#f7fbfc',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+    border:1px solid #F7FAEF;
+    margin-bottom: 5px;
+}   
+h1 {
+    color:#FFE72E;
+}
+h2 {
+    margin:0px 0px 10px 10px;
+    color:#64696E;
+}
+label {
+    font-size:14px;
+}
+.addLink {
+    margin-left:15px;
+}
+
+/* Personuppgifter */
+#personInfo table {
+    width:100%;
+}
+.labelColumn {
+    text-align: right;
+    width:100px;
+}
+.inputColumn input {
+    width:98%;
+}
+
+/* Kompetens */
+
+
+/* Tillgänglighet */
+
