@@ -4,6 +4,8 @@
  */
 package Controller;
 
+import Persistence.Competence;
+import Persistence.CompetenceDTO;
 import Persistence.RegistrationDOA;
 import java.util.List;
 import javax.ejb.EJB;
@@ -19,7 +21,7 @@ public class RegistrationBean {
     @EJB
     RegistrationDOA persistence;
     
-    public List getAllCompetences() {
-        return null;
+    public List<CompetenceDTO> getAllCompetences() {
+        return persistence.getAllComptences();
     }
 }

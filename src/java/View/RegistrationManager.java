@@ -4,10 +4,13 @@
  */
 package View;
 
+import Persistence.Competence;
 import Controller.RegistrationBean;
+import Persistence.CompetenceDTO;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.List;
 import javax.ejb.EJB;
 
@@ -23,7 +26,9 @@ public class RegistrationManager implements Serializable {
     RegistrationBean registrationBean;
     
     RegistrationDTOImpl registrationDTO;
-    List competenceNames;
+    List<CompetenceDTO> competenceNames;
+    Competence competence;
+    float competenceYears;
     
     /**
      * Creates a new instance of RegistrationManager
@@ -61,10 +66,33 @@ public class RegistrationManager implements Serializable {
         registrationDTO.setEmail(email);
     }
     
-    public void getCompetence() {}
-    public void setCompetenc() {
-        registrationDTO.addCompetence();
+    public CompetenceProfileDTO[] getCompetenceProfileDTO() {
+        return registrationDTO.getCompetence();
     }
     
-    //public String getCompetenceNames
+    public void getSelectedCompetence() {}
+    public void setSelectedCompetence(long id) {
+        Iterator<CompetenceDTO> iterator = competenceNames.iterator();
+        
+        while (iterator.hasNext()) {
+            CompetenceDTO c = iterator.next();
+            if (c.getId() == id) {
+                //competence = c;
+            }
+        }
+    }
+    
+    public void setYears() {}
+    public void setYear(float years) {
+        this.competenceYears = years;
+    }
+    
+    public void getCompetence(){}
+    public void setCompetence() {
+        //registrationDTO.setCompetence(0, competence, competenceYears);
+    }
+    
+    public List<CompetenceDTO> getCompetenceNames() {
+        return competenceNames;
+    }
 }

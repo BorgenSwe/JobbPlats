@@ -4,6 +4,8 @@
  */
 package View;
 
+import Persistence.Competence;
+
 /**
  *
  * @author 573w3
@@ -14,10 +16,15 @@ public class RegistrationDTOImpl implements RegistrationDTO {
     private String surname;
     private String ssn;
     private String email;
+    private CompetenceProfileDTOImpl[] competences;
     
     
     public RegistrationDTOImpl() {
+        competences = new CompetenceProfileDTOImpl[10];
         
+        for (int i = 0; i < competences.length; i++) {
+            competences[i] = new CompetenceProfileDTOImpl();
+        }
     }
     
     public String getName() {
@@ -49,10 +56,7 @@ public class RegistrationDTOImpl implements RegistrationDTO {
     }
     
     public CompetenceProfileDTO[] getCompetence() {
-        return null;
-    }
-    public void addCompetence() {
-        
+        return competences;
     }
     
     public AvailabilityDTO[] getAvailabilty() {
