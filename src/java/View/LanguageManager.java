@@ -25,9 +25,10 @@ public class LanguageManager {
     }
     
     public void change() {
-        FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale("sv"));
-        //if (FacesContext.getCurrentInstance().getViewRoot().getLocale().getLanguage().equals(Locale.ENGLISH.getLanguage())) {
-        //    FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale("sv"));
-        //} else FacesContext.getCurrentInstance().getViewRoot().setLocale(Locale.ENGLISH);
+        System.out.println("Nuvarande locale: " + FacesContext.getCurrentInstance().getViewRoot().getLocale());
+        //FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale("sv"));
+        if (FacesContext.getCurrentInstance().getViewRoot().getLocale().getLanguage().equals(Locale.ENGLISH.getLanguage())) {
+            FacesContext.getCurrentInstance().getViewRoot().setLocale(Locale.FRENCH);
+        } else FacesContext.getCurrentInstance().getViewRoot().setLocale(Locale.ENGLISH);
     }
 }
