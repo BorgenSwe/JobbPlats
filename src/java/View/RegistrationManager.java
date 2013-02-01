@@ -4,36 +4,43 @@
  */
 package View;
 
-import Persistence.Competence;
 import Controller.RegistrationBean;
+import Persistence.Competence;
 import Persistence.CompetenceDTO;
-import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
+import javax.annotation.ManagedBean;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
 /**
  *
  * @author 573w3
  */
 @Named(value = "registrationManager")
-@SessionScoped
+@ManagedBean
+@RequestScoped
 public class RegistrationManager implements Serializable {
 
     @EJB
-    RegistrationBean registrationBean;
+    private RegistrationBean registrationBean;
     
-    RegistrationDTOImpl registrationDTO;
-    List<CompetenceDTO> competenceNames;
-    Competence competence;
-    float competenceYears;
+    private RegistrationDTOImpl registrationDTO;
+    private List<CompetenceDTO> competenceNames;
+    private Competence competence;
+    private float competenceYears;
     
     /**
      * Creates a new instance of RegistrationManager
-     */
+     */ 
     public RegistrationManager() {
+    }
+    
+    @PostConstruct
+    private void init() {
         registrationDTO = new RegistrationDTOImpl();
         competenceNames = registrationBean.getAllCompetences();
     }
