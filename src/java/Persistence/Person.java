@@ -10,11 +10,11 @@ public abstract class Person {
     /**
      * First name of the person 
      */
-    String name;
+    private String name;
     /**
      * Surname of the person
      */
-    String surname;
+    private String surname;
 
     /***************
      * GET and SET * 

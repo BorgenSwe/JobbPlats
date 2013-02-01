@@ -11,14 +11,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 /**
  * This entity represent a type of competence available in the system.
  * @author Jocke
  */
 @Entity
-public class Competence implements Serializable {
+public class Competence implements Serializable, CompetenceDTO {
     private static final long serialVersionUID = 1L;
     
     /**
@@ -33,15 +32,16 @@ public class Competence implements Serializable {
      * The map is used for internationalization. The key is the locale code("sv"
      * for swedish and "en" for english).
      */
-    @OneToMany
     private Map<String, String> name;
     
     /***************
      * GET and SET * 
      ***************/
+    @Override
     public Long getId() {
         return id;
     }
+    @Override
     public String getName() {
         return name.get(FacesContext.getCurrentInstance().getViewRoot().getLocale().toString());
     }
