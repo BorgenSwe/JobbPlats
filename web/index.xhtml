@@ -41,31 +41,34 @@
                 <!-- Competence -->
                 <div class="section" id="competenceInfo">
                     <h2>#{text.competence}</h2>
+		    <a href="" class="addLink" id="addCompetence"></a>
                     
                     <!-- Loop igenom kompetensarrayen -->
                     <c:forEach var="ix" begin="0" end="9" step="1">
                         <div class="competenceRow">
-                            <h:outputLabel value="#{text.competence}" for="competence#{ix}" />
+			  
+			  <h:outputLabel value="#{text.competence}" for="competence#{ix}" />
 
-                            <!-- Kombobox för detta kompetensindex -->
-                            <h:selectOneMenu id="competence#{ix}" value="#{registrationManager.competenceProfileDTO[ix].id}">
-                                <c:forEach var="element" items="#{registrationManager.competenceNames}">
-                                    <f:selectItem itemLabel="#{element.name}" itemValue="#{element.id}" />
-                                </c:forEach>
-                            </h:selectOneMenu>
+			  <!-- Kombobox för detta kompetensindex -->
+			  <h:selectOneMenu id="competence#{ix}" value="#{registrationManager.competenceProfileDTO[ix].id}">
+			      <c:forEach var="element" items="#{registrationManager.competenceNames}">
+				  <f:selectItem itemLabel="#{element.name}" itemValue="#{element.id}" />
+			      </c:forEach>
+			  </h:selectOneMenu>
 
-                            <!-- År för detta kompetensindex -->
-                            <h:outputLabel value="#{text.competenceYears}" for="competence#{ix}Years" />
-                            <h:inputText id="competence#{ix}Years" value="#{registrationManager.competenceProfileDTO[ix].years}" />
+
+			<!-- År för detta kompetensindex -->
+
+			  <h:outputLabel value="#{text.competenceYears}" for="competence#{ix}Years" />
+			  <h:inputText id="competence#{ix}Years" value="#{registrationManager.competenceProfileDTO[ix].years}" />
                         </div>
                     </c:forEach>
-                    
-                    <a href="#" class="addLink" id="addCompetence"></a>
                 </div>
 
                 <!-- Availability -->
                 <div class="section" id="availabilityInfo">
                     <h2>#{text.availability}</h2>
+		    <a href="" class="addLink" id="addAvailability"></a>
                     
 		    <!-- Loop igenom tillgänglighetsarrayen -->
                     <c:forEach var="ix" begin="0" end="9" step="1">
@@ -77,13 +80,11 @@
 			  <h:inputText id="availability#{ix}To" value="#{registrationManager.availabilityDTO[ix].to}" />
 		      </div>
 		    </c:forEach>
-
-                    <a href="#" class="addLink" id="addAvailability"></a>
                 </div>
                
                 <!-- Buttons -->
                 <div class="section" id="controlButtons">
-                    <h:commandButton value="#{text.submit}" action="success"/>
+                    <h:commandButton class="button" value="#{text.submit}" action="success"/>
                 </div>
             </h:form>
         </div>
