@@ -1,14 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package View;
 
 import Controller.RegistrationBean;
-import Persistence.Competence;
 import Persistence.CompetenceDTO;
 import java.io.Serializable;
-import java.util.Iterator;
 import java.util.List;
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
@@ -17,7 +12,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 /**
- *
+ * This managed bean represents the view for the registration.
+ * It serves requests coming from index.xhtml
  * @author 573w3
  */
 @Named(value = "registrationManager")
@@ -43,18 +39,21 @@ public class RegistrationManager implements Serializable {
         competenceNames = registrationBean.getAllCompetences();
     }
     
-    public String getName() {
-        return registrationDTO.getName();
-    }
-    public void setName(String name) {
-        registrationDTO.setName(name);
-    }
-    
+    /***************
+     * GET and SET * 
+     ***************/
     public String getSurname() {
         return registrationDTO.getSurname();
     }
     public void setSurname(String surname) {
         registrationDTO.setSurname(surname);
+    }
+    
+    public String getName() {
+        return registrationDTO.getName();
+    }
+    public void setName(String name) {
+        registrationDTO.setName(name);
     }
     
     public String getSsn() {
@@ -74,6 +73,7 @@ public class RegistrationManager implements Serializable {
     public CompetenceProfileDTO[] getCompetenceProfileDTO() {
         return registrationDTO.getCompetence();
     }
+    
     public AvailabilityDTO[] getAvailabilityDTO() {
         return registrationDTO.getAvailabilty();
     }

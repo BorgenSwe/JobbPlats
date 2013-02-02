@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Controller;
 
 import Persistence.Competence;
@@ -13,7 +10,9 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /**
- *
+ * EJB that operates in the applications business layer. 
+ * The RegistrationManager class injects this EJB and uses it to process 
+ * business logic and communicate with the persistence layer. 
  * @author 573w3
  */
 @Stateless

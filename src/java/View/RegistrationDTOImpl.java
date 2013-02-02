@@ -5,7 +5,8 @@
 package View;
 
 /**
- *
+ * Holds data about a registration as it is sent from the view down to the 
+ * persistence layer. 
  * @author 573w3
  */
 public class RegistrationDTOImpl implements RegistrationDTO {
@@ -28,6 +29,9 @@ public class RegistrationDTOImpl implements RegistrationDTO {
         }
     }
     
+    /***************
+     * GET and SET * 
+     ***************/
     @Override
     public String getName() {
         return name;
