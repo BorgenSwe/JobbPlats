@@ -30,6 +30,8 @@ public class RegistrationManager implements Serializable {
     
     private RegistrationDTOImpl registrationDTO;
     private List<CompetenceDTO> competenceNames;
+    
+    // Behövs de här verkligen stefan?!!?!? jag la in availabilityDTO btw
     private Competence competence;
     private float competenceYears;
     
