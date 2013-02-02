@@ -48,7 +48,7 @@
                             <h:outputLabel value="#{text.competence}" for="competence#{ix}" />
 
                             <!-- Kombobox för detta kompetensindex -->
-                            <h:selectOneMenu id="competence#{ix}" value="#{registrationManager.competenceProfileDTO[ix].selectedCompetence}">
+                            <h:selectOneMenu id="competence#{ix}" value="#{registrationManager.competenceProfileDTO[ix].id}">
                                 <c:forEach var="element" items="#{registrationManager.competenceNames}">
                                     <f:selectItem itemLabel="#{element.name}" itemValue="#{element.id}" />
                                 </c:forEach>
@@ -67,14 +67,17 @@
                 <div class="section" id="availabilityInfo">
                     <h2>#{text.availability}</h2>
                     
-                    <div class="availabilityRow">
-                        <h:outputLabel value="#{text.availabilityFrom}" for="availability1From" />
-                        <h:inputText id="availability1From" value="#{registrationManager.availability}" />
+		    <!-- Loop igenom tillgänglighetsarrayen -->
+                    <c:forEach var="ix" begin="0" end="9" step="1">
+		      <div class="availabilityRow">
+			  <h:outputLabel value="#{text.availabilityFrom}" for="availability#{ix}From" />
+			  <h:inputText id="availability#{ix}From" value="#{registrationManager.availabilityDTO[ix].from}" />
 
-                        <h:outputLabel value="#{text.availabilityTo}" for="availability1To" />
-                        <h:inputText id="availability1To" value="#{registrationManager.availability}" />
-                    </div>
-                    
+			  <h:outputLabel value="#{text.availabilityTo}" for="availability#{ix}To" />
+			  <h:inputText id="availability#{ix}To" value="#{registrationManager.availabilityDTO[ix].to}" />
+		      </div>
+		    </c:forEach>
+
                     <a href="#" class="addLink" id="addAvailability"></a>
                 </div>
                

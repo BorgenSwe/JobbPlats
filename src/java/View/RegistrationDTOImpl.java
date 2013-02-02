@@ -4,8 +4,6 @@
  */
 package View;
 
-import Persistence.Competence;
-
 /**
  *
  * @author 573w3
@@ -17,6 +15,7 @@ public class RegistrationDTOImpl implements RegistrationDTO {
     private String ssn;
     private String email;
     private CompetenceProfileDTOImpl[] competences;
+    private AvailabilityDTOImpl[] availabilities;
     
     
     public RegistrationDTOImpl() {
@@ -60,6 +59,6 @@ public class RegistrationDTOImpl implements RegistrationDTO {
     }
     
     public AvailabilityDTO[] getAvailabilty() {
-        return null;
+        return availabilities;
     }
 }

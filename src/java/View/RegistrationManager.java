@@ -76,6 +76,9 @@ public class RegistrationManager implements Serializable {
     public CompetenceProfileDTO[] getCompetenceProfileDTO() {
         return registrationDTO.getCompetence();
     }
+    public AvailabilityDTO[] getAvailabilityDTO() {
+        return registrationDTO.getAvailabilty();
+    }
     
     public void getSelectedCompetence() {}
     public void setSelectedCompetence(long id) {
