@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 /**
  * EJB that operates in the applications business layer. 
@@ -18,8 +19,8 @@ import javax.ejb.Stateless;
 @Stateless
 public class RegistrationBean {
 
-    //@EJB
-    //private RegistrationDOA persistence;
+    @Inject
+    private RegistrationDOA persistence;
     
     public List<CompetenceDTO> getAllCompetences() {
         return new ArrayList<CompetenceDTO>();//persistence.getAllComptences();

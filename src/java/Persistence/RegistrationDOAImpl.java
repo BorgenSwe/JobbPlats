@@ -14,7 +14,7 @@ import javax.persistence.Query;
  * during the registration of an application by a user.
  * @author Jocke
  */
-@Stateless
+//@Stateless
 public class RegistrationDOAImpl implements RegistrationDOA{
 
     @PersistenceContext(unitName = "JobbPlatsPU")
