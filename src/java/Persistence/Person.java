@@ -19,12 +19,14 @@ public abstract class Person implements PersonDTO {
     /***************
      * GET and SET * 
      ***************/
+    @Override
     public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
     }
+    @Override
     public String getSurname() {
         return surname;
     }

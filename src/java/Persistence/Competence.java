@@ -2,17 +2,14 @@
 package Persistence;
 
 import java.io.Serializable;
-import java.util.Map;
+import java.util.List;
 import javax.faces.context.FacesContext;
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.MapKeyColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  * This entity represent a type of competence available in the system.
@@ -31,14 +28,10 @@ public class Competence implements Serializable, CompetenceDTO {
 
     /**
      * Name of the competence type. 
-     * The map is used for internationalization. The key is the locale code( for 
-     * example "sv" for swedish and "en" for english).
+     * A list of localizations.
      */
-    /*@ElementCollection(fetch=FetchType.EAGER)
-    @MapKeyColumn(name = "language", insertable = false, updatable = false)
-    @CollectionTable(name = "competence_multilingual_string_map", 
-                     joinColumns = @JoinColumn(name = "string_id"))
-    private Map<String, String> name;*/
+    //@OneToMany
+    //private List<Localization> name;
     private String name;
     
     /***************
@@ -50,7 +43,16 @@ public class Competence implements Serializable, CompetenceDTO {
     }
     @Override
     public String getName() {
-        //return name.get(FacesContext.getCurrentInstance().getViewRoot().getLocale().toString());
+        /*String language = FacesContext.getCurrentInstance().getViewRoot().getLocale().toString();
+        
+        for(Localization localization:name) {
+            if(localization.getLang().equalsIgnoreCase(language)) {
+                return localization.getTrans();
+            }
+        }
+        
+        return name.get(0).getTrans();*/
+        
         return name;
     }
 

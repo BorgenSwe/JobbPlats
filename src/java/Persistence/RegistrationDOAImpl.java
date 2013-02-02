@@ -4,14 +4,17 @@ package Persistence;
 import View.RegistrationDTO;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 /**
- * 
+ * Implementation of the RegistrationDOA. This will handle all transactions made 
+ * during the registration of an application by a user.
  * @author Jocke
  */
+@Stateless
 public class RegistrationDOAImpl implements RegistrationDOA{
 
     @PersistenceContext(unitName = "JobbPlatsPU")

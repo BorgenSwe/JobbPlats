@@ -6,61 +6,53 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 /**
  *
- * @author Jocke
+ * @author Joakim
  */
 @Entity
-public class CompetenceProfile implements Serializable, CompetenceProfileDTO {
+public class Localization implements Serializable {
     private static final long serialVersionUID = 1L;
-    
     /**
-     * Id of the competence. Used by JPA
+     * Id of the localization
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     /**
-     * Number of years of experience. 1 decimal possible.
+     * Language of the localization
      */
-    private float years;
+    private String lang;
     
     /**
-     * 
+     * Translation to the language above
      */
-    @ManyToOne
-    private Competence competence;
+    private String trans;
     
     /***************
      * GET and SET * 
      ***************/
-    @Override
     public Long getId() {
         return id;
     }
     public void setId(Long id) {
         this.id = id;
     }
-    @Override
-    public float getYears() {
-        return years;
+    public String getLang() {
+        return lang;
     }
-    public void setYears(float years) {
-        this.years = years;
+    public void setLang(String lang) {
+        this.lang = lang;
+    }
+    public String getTrans() {
+        return trans;
+    }
+    public void setTrans(String trans) {
+        this.trans = trans;
     }
 
-    @Override
-    public Competence getCompetenceType() {
-        return competence;
-    }
-
-    public void setCompetenceType(Competence competence) {
-        this.competence = competence;
-    }
-    
     /**
      * Generates a hash code
      * @return hash code
@@ -80,10 +72,10 @@ public class CompetenceProfile implements Serializable, CompetenceProfileDTO {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CompetenceProfile)) {
+        if (!(object instanceof Localization)) {
             return false;
         }
-        CompetenceProfile other = (CompetenceProfile) object;
+        Localization other = (Localization) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -96,6 +88,6 @@ public class CompetenceProfile implements Serializable, CompetenceProfileDTO {
      */
     @Override
     public String toString() {
-        return "Persistence.CompetenceProfile[ id=" + id + " ]";
+        return "Persistence.Localization[ id=" + id + " ]";
     }
 }
