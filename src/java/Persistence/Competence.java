@@ -2,14 +2,10 @@
 package Persistence;
 
 import java.io.Serializable;
-import java.util.List;
-import javax.faces.context.FacesContext;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /**
  * This entity represent a type of competence available in the system.
@@ -41,6 +37,9 @@ public class Competence implements Serializable, CompetenceDTO {
     public Long getId() {
         return id;
     }
+    protected void setId(Long id) {
+        this.id = id;
+    }
     @Override
     public String getName() {
         /*String language = FacesContext.getCurrentInstance().getViewRoot().getLocale().toString();
@@ -54,6 +53,9 @@ public class Competence implements Serializable, CompetenceDTO {
         return name.get(0).getTrans();*/
         
         return name;
+    }
+    protected void setName(String name) {
+        this.name = name;
     }
 
     /**

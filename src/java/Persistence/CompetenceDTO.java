@@ -2,7 +2,7 @@
 package Persistence;
 
 /**
- * Public interface of the 
+ * DTO of Competence
  * @author Jocke
  */
 public interface CompetenceDTO {

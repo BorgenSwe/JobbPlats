@@ -8,7 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- *
+ * This entity is used for localization of words in the database. The entity 
+ * contains the language of the translation and the translated text.
  * @author Joakim
  */
 @Entity

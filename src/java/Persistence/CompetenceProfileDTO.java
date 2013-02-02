@@ -2,7 +2,7 @@
 package Persistence;
 
 /**
- *
+ * DTO of CompetenceProfile
  * @author Joakim
  */
 public interface CompetenceProfileDTO {

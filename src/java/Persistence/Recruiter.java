@@ -1,6 +1,7 @@
 package Persistence;
 
 import java.io.Serializable;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,16 +12,10 @@ import javax.persistence.Id;
  * @author Jocke
  */
 @Entity
+@DiscriminatorValue("R")
 public class Recruiter extends Person implements Serializable, RecruiterDTO {
     private static final long serialVersionUID = 1L;
     
-    /**
-     * Id of the recruiter. Used for identification and JPA.
-     */
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     /**
      * Username of the recruiter
      */
@@ -35,24 +30,17 @@ public class Recruiter extends Person implements Serializable, RecruiterDTO {
      * GET and SET * 
      ***************/
     @Override
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-    @Override
     public String getUsername() {
         return username;
     }
-    public void setUsername(String username) {
+    protected void setUsername(String username) {
         this.username = username;
     }
     @Override
     public String getPassword() {
         return password;
     }
-    public void setPassword(String password) {
+    protected void setPassword(String password) {
         this.password = password;
     }
     

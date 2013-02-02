@@ -41,14 +41,14 @@ public class CompetenceProfile implements Serializable, CompetenceProfileDTO {
     public Long getId() {
         return id;
     }
-    public void setId(Long id) {
+    protected void setId(Long id) {
         this.id = id;
     }
     @Override
     public float getYears() {
         return years;
     }
-    public void setYears(float years) {
+    protected void setYears(float years) {
         this.years = years;
     }
 
@@ -57,7 +57,7 @@ public class CompetenceProfile implements Serializable, CompetenceProfileDTO {
         return competence;
     }
 
-    public void setCompetenceType(Competence competence) {
+    protected void setCompetenceType(Competence competence) {
         this.competence = competence;
     }
     

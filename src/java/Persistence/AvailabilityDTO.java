@@ -4,7 +4,7 @@ package Persistence;
 import java.util.Date;
 
 /**
- *
+ * DTO of Availability
  * @author Joakim
  */
 public interface AvailabilityDTO {

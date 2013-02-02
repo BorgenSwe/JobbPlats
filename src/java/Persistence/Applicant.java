@@ -1,11 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Persistence;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,16 +16,10 @@ import javax.persistence.OneToMany;
  * @author Jocke
  */
 @Entity
+@DiscriminatorValue("A")
 public class Applicant extends Person implements Serializable, ApplicantDTO {
     private static final long serialVersionUID = 1L;
     
-    /**
-     * Id of the applicant
-     */
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     /**
      * Social Security Number (Svenska: Personnummer)
      */
@@ -53,45 +46,46 @@ public class Applicant extends Person implements Serializable, ApplicantDTO {
      * GET and SET * 
      ***************/
     @Override
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-    @Override
     public String getSsn() {
         return ssn;
     }
-    public void setSsn(String ssn) {
+    protected void setSsn(String ssn) {
         this.ssn = ssn;
     }
     @Override
     public String getEmail() {
         return email;
     }
-    public void setEmail(String email) {
+    protected void setEmail(String email) {
         this.email = email;
     }
     public List<Availability> getAvailability() {
         return availability;
     }
-    public void setAvailability(List<Availability> availability) {
+    protected void setAvailability(List<Availability> availability) {
         this.availability = availability;
     }
     public List<CompetenceProfile> getCompetence() {
         return competence;
     }
-    public void setCompetence(List<CompetenceProfile> competence) {
+    protected void setCompetence(List<CompetenceProfile> competence) {
         this.competence = competence;
     }
     @Override
     public List<AvailabilityDTO> getAvailabilityDTO() {
-        return null;
+        List<AvailabilityDTO> availDTO = new ArrayList();
+        for(Availability a:availability){
+            availDTO.add(a);
+        }
+        return availDTO;
     }
     @Override
     public List<CompetenceProfileDTO> getCompetenceDTO() {
-        return null;
+        List<CompetenceProfileDTO> compDTO = new ArrayList();
+        for(CompetenceProfile c:competence){
+            compDTO.add(c);
+        }
+        return compDTO;
     }
     
     /**

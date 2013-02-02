@@ -45,21 +45,21 @@ public class Availability implements Serializable, AvailabilityDTO {
     public Long getId() {
         return id;
     }
-    public void setId(Long id) {
+    protected void setId(Long id) {
         this.id = id;
     }
     @Override
     public Date getDatefrom() {
         return datefrom;
     }
-    public void setDatefrom(Date datefrom) {
+    protected void setDatefrom(Date datefrom) {
         this.datefrom = datefrom;
     }
     @Override
     public Date getDateto() {
         return dateto;
     }
-    public void setDateto(Date dateto) {
+    protected void setDateto(Date dateto) {
         this.dateto = dateto;
     }
     
