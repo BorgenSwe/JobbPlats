@@ -31,10 +31,6 @@ public class RegistrationManager implements Serializable {
     private RegistrationDTOImpl registrationDTO;
     private List<CompetenceDTO> competenceNames;
     
-    // Behövs de här verkligen stefan?!!?!? jag la in availabilityDTO btw
-    private Competence competence;
-    private float competenceYears;
-    
     /**
      * Creates a new instance of RegistrationManager
      */ 
@@ -80,28 +76,6 @@ public class RegistrationManager implements Serializable {
     }
     public AvailabilityDTO[] getAvailabilityDTO() {
         return registrationDTO.getAvailabilty();
-    }
-    
-    public void getSelectedCompetence() {}
-    public void setSelectedCompetence(long id) {
-        Iterator<CompetenceDTO> iterator = competenceNames.iterator();
-        
-        while (iterator.hasNext()) {
-            CompetenceDTO c = iterator.next();
-            if (c.getId() == id) {
-                //competence = c;
-            }
-        }
-    }
-    
-    public void setYears() {}
-    public void setYear(float years) {
-        this.competenceYears = years;
-    }
-    
-    public void getCompetence(){}
-    public void setCompetence() {
-        //registrationDTO.setCompetence(0, competence, competenceYears);
     }
     
     public List<CompetenceDTO> getCompetenceNames() {

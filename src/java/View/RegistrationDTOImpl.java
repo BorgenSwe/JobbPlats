@@ -20,12 +20,15 @@ public class RegistrationDTOImpl implements RegistrationDTO {
     
     public RegistrationDTOImpl() {
         competences = new CompetenceProfileDTOImpl[10];
+        availabilities = new AvailabilityDTOImpl[10];
         
         for (int i = 0; i < competences.length; i++) {
             competences[i] = new CompetenceProfileDTOImpl();
+            availabilities[i] = new AvailabilityDTOImpl();
         }
     }
     
+    @Override
     public String getName() {
         return name;
     }
@@ -33,6 +36,7 @@ public class RegistrationDTOImpl implements RegistrationDTO {
         this.name = name;
     }
     
+    @Override
     public String getSurname() {
         return surname;
     }
@@ -40,6 +44,7 @@ public class RegistrationDTOImpl implements RegistrationDTO {
         this.surname = surname;
     }
     
+    @Override
     public String getSsn() {
         return ssn;
     }
@@ -47,6 +52,7 @@ public class RegistrationDTOImpl implements RegistrationDTO {
         this.ssn = ssn;
     }
     
+    @Override
     public String getEmail() {
         return email;
     }
@@ -54,10 +60,12 @@ public class RegistrationDTOImpl implements RegistrationDTO {
         this.email = email;
     }
     
+    @Override
     public CompetenceProfileDTO[] getCompetence() {
         return competences;
     }
     
+    @Override
     public AvailabilityDTO[] getAvailabilty() {
         return availabilities;
     }
