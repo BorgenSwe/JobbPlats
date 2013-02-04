@@ -74,10 +74,10 @@
                     <c:forEach var="ix" begin="0" end="9" step="1">
 		      <div class="availabilityRow">
 			  <h:outputLabel value="#{text.availabilityFrom}" for="availability#{ix}From" />
-			  <h:inputText id="availability#{ix}From" value="#{registrationManager.availabilityDTOImpl[ix].from}" />
+			  <h:inputText id="availability#{ix}From" value="#{registrationManager.availabilityDTOImpl[ix].stringFrom}" />
 
 			  <h:outputLabel value="#{text.availabilityTo}" for="availability#{ix}To" />
-			  <h:inputText id="availability#{ix}To" value="#{registrationManager.availabilityDTOImpl[ix].to}" />
+			  <h:inputText id="availability#{ix}To" value="#{registrationManager.availabilityDTOImpl[ix].stringTo}" />
 		      </div>
 		    </c:forEach>
                 </div>

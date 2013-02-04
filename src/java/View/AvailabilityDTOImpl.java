@@ -15,6 +15,8 @@ import java.util.Date;
 public class AvailabilityDTOImpl implements AvailabilityDTO {
     private Date from;
     private Date to;
+    private String stringTo;
+    private String stringFrom;
     
     private Date parseDate(String str) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -35,8 +37,12 @@ public class AvailabilityDTOImpl implements AvailabilityDTO {
 	return from;
     }
 
-    public void setFrom(String from) {
+    public String getStringFrom() {
+        return stringFrom;
+    }
+    public void setStringFrom(String from) {
         this.from = parseDate(from);
+        stringFrom = from;
     }
 
     @Override
@@ -44,7 +50,11 @@ public class AvailabilityDTOImpl implements AvailabilityDTO {
 	return to;
     }
 
-    public void setTo(String to) {
+    public String getStringTo() {
+        return stringTo;
+    }
+    public void setStringTo(String to) {
 	this.to = parseDate(to);
+        stringTo = to;
     }
 }

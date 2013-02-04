@@ -97,6 +97,4 @@ public class RegistrationManager implements Serializable {
         System.out.println("reg from managed");
         registrationBean.register(registrationDTO);
     }
-    
-    
 }
