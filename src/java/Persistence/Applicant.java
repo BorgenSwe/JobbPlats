@@ -4,6 +4,7 @@ package Persistence;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,13 +34,13 @@ public class Applicant extends Person implements Serializable, ApplicantDTO {
     /**
      * The dates the applicant is available for work
      */
-    @OneToMany
+    @OneToMany(cascade = { CascadeType.ALL })
     private List<Availability> availability;
     
     /**
      * The competence and experience of the applicant
      */
-    @OneToMany
+    @OneToMany(cascade = { CascadeType.ALL })
     private List<CompetenceProfile> competence;
     
     /***************

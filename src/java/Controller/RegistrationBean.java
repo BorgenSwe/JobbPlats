@@ -2,9 +2,14 @@
 package Controller;
 
 import Persistence.CompetenceDTO;
+//import Persistence.CompetenceProfileDTO;
 import Persistence.InvalidCompetenceException;
 import Persistence.RegistrationDOA;
+import View.AvailabilityDTOImpl;
+import View.CompetenceProfileDTOImpl;
 import View.RegistrationDTO;
+import View.RegistrationDTOImpl;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,13 +29,31 @@ public class RegistrationBean {
     private RegistrationDOA persistence;
     
     public List<CompetenceDTO> getAllCompetences() {
-        System.out.println("return comps");
         return persistence.getAllComptences();
     }
     
-    public void register(RegistrationDTO registration) {
+    public void register(RegistrationDTOImpl registration) {
         try {
-            System.out.println("reg from EJB");
+            View.CompetenceProfileDTO[] comps = registration.getCompetence();
+            List<View.CompetenceProfileDTO> newComps = new LinkedList<View.CompetenceProfileDTO>();
+            for (int i = 0; i < comps.length; i++) {
+                if (comps[i].getYears() > 0) {
+                    newComps.add(comps[i]);
+                }
+            }
+            registration.setCompetenceProfileDTOImpl(newComps.toArray(
+                    new View.CompetenceProfileDTOImpl[newComps.size()]));
+            
+            AvailabilityDTOImpl[] avails = registration.getAvailabilty();
+            List<View.AvailabilityDTOImpl> newAvails = new LinkedList<View.AvailabilityDTOImpl>();
+            for (int i = 0; i < comps.length; i++) {
+                if (avails[i].getFrom() != null) {
+                    newAvails.add(avails[i]);
+                }
+            }
+            registration.setAvailabilityDTOImpl(newAvails.toArray(
+                    new View.AvailabilityDTOImpl[newAvails.size()]));
+            
             persistence.register(registration);
         } catch (InvalidCompetenceException ex) {
             System.out.println("kan inte registrera");

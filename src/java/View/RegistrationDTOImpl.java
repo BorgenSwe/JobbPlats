@@ -69,8 +69,16 @@ public class RegistrationDTOImpl implements RegistrationDTO {
         return competences;
     }
     
+    public void setCompetenceProfileDTOImpl(CompetenceProfileDTOImpl[] competences) {
+        this.competences = competences;
+    }
+    
     @Override
     public AvailabilityDTOImpl[] getAvailabilty() {
         return availabilities;
+    }
+    
+    public void setAvailabilityDTOImpl(AvailabilityDTOImpl[] availabilities) {
+        this.availabilities = availabilities;
     }
 }
