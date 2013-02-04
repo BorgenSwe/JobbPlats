@@ -4,7 +4,6 @@ package Persistence;
 import View.RegistrationDTO;
 import java.util.ArrayList;
 import java.util.List;
-import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -14,7 +13,6 @@ import javax.persistence.Query;
  * during the registration of an application by a user.
  * @author Jocke
  */
-//@Stateless
 public class RegistrationDOAImpl implements RegistrationDOA{
 
     @PersistenceContext(unitName = "JobbPlatsPU")
@@ -41,14 +39,14 @@ public class RegistrationDOAImpl implements RegistrationDOA{
         for(View.CompetenceProfileDTO tempComptenceProfile : registration.getCompetence()){
             CompetenceProfile newCompetenceProfile = new CompetenceProfile();
             newCompetenceProfile.setYears(tempComptenceProfile.getYears());
-            Competence realCompetence = em.find(Competence.class, tempComptenceProfile.getCompetenceDTO().getId());
+            Competence realCompetence = (Competence) tempComptenceProfile.getCompetenceDTO();
             if(realCompetence == null) {
                 throw new InvalidCompetenceException("One or more of the competences id does not correspond with the Database");
             }
             newCompetenceProfile.setCompetenceType(realCompetence);
             competences.add(newCompetenceProfile);
         }
-        for(View.AvailabilityDTO tempAvailability : registration.getAvailabilty()){
+        for(View.AvailabilityDTO tempAvailability : registration.getAvailability()){
             Availability newAvailability = new Availability();
             newAvailability.setDatefrom(tempAvailability.getFrom());
             newAvailability.setDateto(tempAvailability.getTo());

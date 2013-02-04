@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package View;
 
 import java.text.ParseException;
@@ -32,11 +29,20 @@ public class AvailabilityDTOImpl implements AvailabilityDTO {
         return null;
     }
 
+    /**
+     * Constructor
+     */
+    public AvailabilityDTOImpl(){
+        
+    }
+    
+    /***************
+     * GET and SET * 
+     ***************/
     @Override
     public Date getFrom() {
 	return from;
     }
-
     public String getStringFrom() {
         return stringFrom;
     }
@@ -44,12 +50,10 @@ public class AvailabilityDTOImpl implements AvailabilityDTO {
         this.from = parseDate(from);
         stringFrom = from;
     }
-
     @Override
     public Date getTo() {
 	return to;
     }
-
     public String getStringTo() {
         return stringTo;
     }

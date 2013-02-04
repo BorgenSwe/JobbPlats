@@ -13,6 +13,10 @@ public class CompetenceProfileDTOImpl implements CompetenceProfileDTO {
     private CompetenceDTO compDTO;
     private float years;
     
+    public CompetenceProfileDTOImpl(){
+        years = 0;
+    }
+    
     /***************
      * GET and SET * 
      ***************/
@@ -23,7 +27,6 @@ public class CompetenceProfileDTOImpl implements CompetenceProfileDTO {
     public void setCompetenceDTO(CompetenceDTO compDTO) {
         this.compDTO = compDTO;
     }
-
     @Override
     public float getYears() {
         return years;

@@ -2,12 +2,9 @@
 package Controller;
 
 import Persistence.CompetenceDTO;
-//import Persistence.CompetenceProfileDTO;
 import Persistence.InvalidCompetenceException;
 import Persistence.RegistrationDOA;
 import View.AvailabilityDTOImpl;
-import View.CompetenceProfileDTOImpl;
-import View.RegistrationDTO;
 import View.RegistrationDTOImpl;
 import java.util.LinkedList;
 import java.util.List;
@@ -28,11 +25,19 @@ public class RegistrationBean {
     @Inject
     private RegistrationDOA persistence;
     
+    /**
+     * Retrieves all possible types of competences from the persistence
+     * @return All competence types
+     */
     public List<CompetenceDTO> getAllCompetences() {
         return persistence.getAllComptences();
     }
     
-    public void register(RegistrationDTOImpl registration) {
+    /**
+     * Registers a job application 
+     * @param registration 
+     */
+    public String register(RegistrationDTOImpl registration) throws RegistrationUnsuccessfulException {
         try {
             View.CompetenceProfileDTO[] comps = registration.getCompetence();
             List<View.CompetenceProfileDTO> newComps = new LinkedList<View.CompetenceProfileDTO>();
@@ -41,23 +46,25 @@ public class RegistrationBean {
                     newComps.add(comps[i]);
                 }
             }
-            registration.setCompetenceProfileDTOImpl(newComps.toArray(
+            registration.setCompetence(newComps.toArray(
                     new View.CompetenceProfileDTOImpl[newComps.size()]));
             
-            AvailabilityDTOImpl[] avails = registration.getAvailabilty();
+            AvailabilityDTOImpl[] avails = registration.getAvailability();
             List<View.AvailabilityDTOImpl> newAvails = new LinkedList<View.AvailabilityDTOImpl>();
             for (int i = 0; i < comps.length; i++) {
                 if (avails[i].getFrom() != null) {
                     newAvails.add(avails[i]);
                 }
             }
-            registration.setAvailabilityDTOImpl(newAvails.toArray(
+            registration.setAvailability(newAvails.toArray(
                     new View.AvailabilityDTOImpl[newAvails.size()]));
             
             persistence.register(registration);
         } catch (InvalidCompetenceException ex) {
             System.out.println("kan inte registrera");
             Logger.getLogger(RegistrationBean.class.getName()).log(Level.SEVERE, null, ex);
+            throw new RegistrationUnsuccessfulException("The registration data is invalid. Caused by:" + ex.getMessage());
         }
+        return "success";
     }
 }

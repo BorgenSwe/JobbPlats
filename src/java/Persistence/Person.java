@@ -1,6 +1,7 @@
 
 package Persistence;
 
+import java.io.Serializable;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.DiscriminatorValue;
@@ -22,7 +23,7 @@ import javax.persistence.Table;
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="TYPE", discriminatorType=DiscriminatorType.STRING,length=20)
 @DiscriminatorValue("P")
-public class Person implements PersonDTO {
+public class Person implements PersonDTO, Serializable {
     /**
      * Id of the person
      */

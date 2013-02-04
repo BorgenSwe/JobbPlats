@@ -7,9 +7,9 @@
       xmlns:c="http://java.sun.com/jsp/jstl/core">
     <h:head>
         <script src="http://code.jquery.com/jquery-latest.js"></script>
-        <script src="validation.js"></script>
-        <script src="registration.js"></script>
-        <link rel="stylesheet" type="text/css" href="registration.css" />
+        <h:outputScript library="js" name="registration.js"/>
+        <h:outputScript library="js" name="validation.js"/>
+        <h:outputStylesheet library="css" name="registration.css"/>
         <title>#{text.title}</title>
     </h:head>
     <h:body>
@@ -18,23 +18,23 @@
             <h:form id="regForm">
                 <!-- Personuppgifter -->
                 <div class="section" id="personInfo">
-                    <h2>Personuppgifter</h2>
+                    <h2>#{text.personalinformation}</h2>
                     <table>
                         <tr>
                             <td class="labelColumn"><h:outputLabel value="#{text.surname}" for="surname" /></td>
-                            <td class="inputColumn"><h:inputText id="surname" class="surname" value="#{registrationManager.surname}" /></td>
+                            <td class="inputColumn"><h:inputText id="surname" class="surname" value="#{registrationManager.registrationDTO.surname}" /></td>
                         </tr>
                         <tr>
                             <td class="labelColumn"><h:outputLabel value="#{text.firstName}" for="name" /></td>
-                            <td class="inputColumn"><h:inputText id="name" value="#{registrationManager.name}" /></td>
+                            <td class="inputColumn"><h:inputText id="name" value="#{registrationManager.registrationDTO.name}" /></td>
                         </tr>
                         <tr>
                             <td class="labelColumn"><h:outputLabel value="#{text.email}" for="email" /></td>
-                            <td class="inputColumn"><h:inputText id="email" value="#{registrationManager.email}" /></td>
+                            <td class="inputColumn"><h:inputText id="email" value="#{registrationManager.registrationDTO.email}" /></td>
                         </tr>
                         <tr>
                             <td class="labelColumn"><h:outputLabel value="#{text.ssn}" for="ssn" /></td>
-                            <td class="inputColumn"><h:inputText id="ssn" value="#{registrationManager.ssn}" /></td>
+                            <td class="inputColumn"><h:inputText id="ssn" value="#{registrationManager.registrationDTO.ssn}" /></td>
                         </tr>
                     </table>
                 </div>
@@ -51,7 +51,7 @@
 			  <h:outputLabel value="#{text.competence}" for="competence#{ix}" />
 
 			  <!-- Kombobox för detta kompetensindex -->
-			  <h:selectOneMenu id="competence#{ix}" value="#{registrationManager.competenceProfileDTOImpl[ix].competenceDTO}">
+			  <h:selectOneMenu id="competence#{ix}" value="#{registrationManager.registrationDTO.competence[ix].competenceDTO}">
                              <f:selectItems value="#{registrationManager.competenceNames}" />
                              <f:converter converterId="listConverter" />
 			  </h:selectOneMenu>
@@ -60,7 +60,7 @@
 			<!-- År för detta kompetensindex -->
 
 			  <h:outputLabel value="#{text.competenceYears}" for="competence#{ix}Years" />
-			  <h:inputText id="competence#{ix}Years" value="#{registrationManager.competenceProfileDTOImpl[ix].years}" />
+			  <h:inputText id="competence#{ix}Years" value="#{registrationManager.registrationDTO.competence[ix].years}" />
                         </div>
                     </c:forEach>
                 </div>
@@ -74,10 +74,10 @@
                     <c:forEach var="ix" begin="0" end="9" step="1">
 		      <div class="availabilityRow">
 			  <h:outputLabel value="#{text.availabilityFrom}" for="availability#{ix}From" />
-			  <h:inputText id="availability#{ix}From" value="#{registrationManager.availabilityDTOImpl[ix].stringFrom}" />
+			  <h:inputText id="availability#{ix}From" value="#{registrationManager.registrationDTO.availability[ix].stringFrom}" />
 
 			  <h:outputLabel value="#{text.availabilityTo}" for="availability#{ix}To" />
-			  <h:inputText id="availability#{ix}To" value="#{registrationManager.availabilityDTOImpl[ix].stringTo}" />
+			  <h:inputText id="availability#{ix}To" value="#{registrationManager.registrationDTO.availability[ix].stringTo}" />
 		      </div>
 		    </c:forEach>
                 </div>

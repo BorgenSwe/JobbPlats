@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package View;
 
 import Persistence.CompetenceDTO;
@@ -11,7 +8,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 
 /**
- *
+ * This converter converts strings to competence and vice versa.
  * @author 573w3
  */
 public class ListConverter implements Converter {

@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package View;
 
 /**
@@ -11,6 +8,8 @@ package View;
  */
 public class RegistrationDTOImpl implements RegistrationDTO {
     
+    private static int CAPACITY = 10;
+    
     private String name;
     private String surname;
     private String ssn;
@@ -18,12 +17,14 @@ public class RegistrationDTOImpl implements RegistrationDTO {
     private CompetenceProfileDTOImpl[] competences;
     private AvailabilityDTOImpl[] availabilities;
     
-    
+    /**
+     * Constructor
+     */
     public RegistrationDTOImpl() {
-        competences = new CompetenceProfileDTOImpl[10];
-        availabilities = new AvailabilityDTOImpl[10];
+        competences = new CompetenceProfileDTOImpl[CAPACITY];
+        availabilities = new AvailabilityDTOImpl[CAPACITY];
         
-        for (int i = 0; i < competences.length; i++) {
+        for (int i = 0; i < CAPACITY; i++) {
             competences[i] = new CompetenceProfileDTOImpl();
             availabilities[i] = new AvailabilityDTOImpl();
         }
@@ -39,7 +40,6 @@ public class RegistrationDTOImpl implements RegistrationDTO {
     public void setName(String name) {
         this.name = name;
     }
-    
     @Override
     public String getSurname() {
         return surname;
@@ -47,7 +47,6 @@ public class RegistrationDTOImpl implements RegistrationDTO {
     public void setSurname(String surname) {
         this.surname = surname;
     }
-    
     @Override
     public String getSsn() {
         return ssn;
@@ -55,7 +54,6 @@ public class RegistrationDTOImpl implements RegistrationDTO {
     public void setSsn(String ssn) {
         this.ssn = ssn;
     }
-    
     @Override
     public String getEmail() {
         return email;
@@ -63,22 +61,18 @@ public class RegistrationDTOImpl implements RegistrationDTO {
     public void setEmail(String email) {
         this.email = email;
     }
-    
     @Override
     public CompetenceProfileDTOImpl[] getCompetence() {
         return competences;
     }
-    
-    public void setCompetenceProfileDTOImpl(CompetenceProfileDTOImpl[] competences) {
+    public void setCompetence(CompetenceProfileDTOImpl[] competences) {
         this.competences = competences;
     }
-    
     @Override
-    public AvailabilityDTOImpl[] getAvailabilty() {
+    public AvailabilityDTOImpl[] getAvailability() {
         return availabilities;
     }
-    
-    public void setAvailabilityDTOImpl(AvailabilityDTOImpl[] availabilities) {
+    public void setAvailability(AvailabilityDTOImpl[] availabilities) {
         this.availabilities = availabilities;
     }
 }

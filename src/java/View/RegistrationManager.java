@@ -2,17 +2,16 @@
 package View;
 
 import Controller.RegistrationBean;
+import Controller.RegistrationUnsuccessfulException;
 import Persistence.CompetenceDTO;
 import java.io.Serializable;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
 import javax.inject.Named;
 
 /**
@@ -22,7 +21,7 @@ import javax.inject.Named;
  */
 @Named(value = "registrationManager")
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class RegistrationManager implements Serializable {
 
     @EJB
@@ -46,48 +45,31 @@ public class RegistrationManager implements Serializable {
     /***************
      * GET and SET * 
      ***************/
-    public String getSurname() {
-        return null;
+    public RegistrationDTOImpl getRegistrationDTO(){
+        return registrationDTO;
+    }
+    public void setRegistrationDTO(RegistrationDTOImpl registrationDTO){
+        this.registrationDTO = registrationDTO;
     }
     
-    public void setSurname(String surname) {
-        registrationDTO.setSurname(surname);
-    }
-    
-    public String getName() {
-        return null;
-    }
-    public void setName(String name) {
-        registrationDTO.setName(name);
-    }
-    
-    public String getSsn() {
-        return null;
-    }
-    public void setSsn(String ssn) {
-        registrationDTO.setSsn(ssn);
-    }
-    
-    public String getEmail() {
-        return null;
-    }
-    public void setEmail(String email) {
-        registrationDTO.setEmail(email);
-    }
-    
-    public CompetenceProfileDTOImpl[] getCompetenceProfileDTOImpl() {
-        return registrationDTO.getCompetence();
-    }
-    
-    public AvailabilityDTOImpl[] getAvailabilityDTOImpl() {
-        return registrationDTO.getAvailabilty();
-    }
-    
+    /**
+     * Gets all the competence options available
+     * @return competence options
+     */
     public List<CompetenceDTO> getCompetenceNames() {
         return competenceNames;
     }
     
-    public void register() {
-        registrationBean.register(registrationDTO);
+    /**
+     * Registers the job application
+     */
+    public String register() {
+        String result = "failure";
+        try {
+            result = registrationBean.register(registrationDTO);
+        } catch (RegistrationUnsuccessfulException ex) {
+            Logger.getLogger(RegistrationManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
     }
 }

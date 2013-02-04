@@ -1,17 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package View;
 
 import java.util.Locale;
 import javax.annotation.ManagedBean;
-import javax.inject.Named;
-import javax.enterprise.context.Dependent;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 
 /**
- *
+ * This managed bean handles the locale-setting in the view
  * @author 573w3
  */
 @Named(value = "languageManager")
