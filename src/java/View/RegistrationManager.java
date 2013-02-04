@@ -28,8 +28,6 @@ public class RegistrationManager implements Serializable {
     @EJB
     private RegistrationBean registrationBean;
     
-    private String surname;
-    
     private RegistrationDTOImpl registrationDTO;
     private List<CompetenceDTO> competenceNames;
     
@@ -53,9 +51,7 @@ public class RegistrationManager implements Serializable {
     }
     
     public void setSurname(String surname) {
-        System.out.println("setting surname");
-        this.surname = surname;
-        //registrationDTO.setSurname(surname);
+        registrationDTO.setSurname(surname);
     }
     
     public String getName() {
@@ -88,12 +84,10 @@ public class RegistrationManager implements Serializable {
     }
     
     public List<CompetenceDTO> getCompetenceNames() {
-        System.out.println("comp managed");
         return competenceNames;
     }
     
     public void register() {
-        System.out.println("reg from managed");
         registrationBean.register(registrationDTO);
     }
 }
