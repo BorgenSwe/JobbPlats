@@ -51,7 +51,7 @@ public class RegistrationBean {
             
             AvailabilityDTOImpl[] avails = registration.getAvailability();
             List<View.AvailabilityDTOImpl> newAvails = new LinkedList<View.AvailabilityDTOImpl>();
-            for (int i = 0; i < comps.length; i++) {
+            for (int i = 0; i < avails.length; i++) {
                 if (avails[i].getFrom() != null) {
                     newAvails.add(avails[i]);
                 }
@@ -61,7 +61,6 @@ public class RegistrationBean {
             
             persistence.register(registration);
         } catch (InvalidCompetenceException ex) {
-            System.out.println("kan inte registrera");
             Logger.getLogger(RegistrationBean.class.getName()).log(Level.SEVERE, null, ex);
             throw new RegistrationUnsuccessfulException("The registration data is invalid. Caused by:" + ex.getMessage());
         }

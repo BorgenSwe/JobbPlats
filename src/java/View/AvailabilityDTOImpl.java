@@ -24,7 +24,7 @@ public class AvailabilityDTOImpl implements AvailabilityDTO {
             Date date = format.parse(str);
             return date != null ? date : null;
         } catch (ParseException ex) {
-            System.out.println("errorz");
+            
         }
         return null;
     }
