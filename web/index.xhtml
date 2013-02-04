@@ -7,6 +7,7 @@
       xmlns:c="http://java.sun.com/jsp/jstl/core">
     <h:head>
         <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="validation.js"></script>
         <script src="registration.js"></script>
         <link rel="stylesheet" type="text/css" href="registration.css" />
         <title>#{text.title}</title>
@@ -14,14 +15,14 @@
     <h:body>
         <div id="content">
             <h1>#{text.title}</h1>
-            <h:form>
+            <h:form id="regForm">
                 <!-- Personuppgifter -->
                 <div class="section" id="personInfo">
                     <h2>Personuppgifter</h2>
                     <table>
                         <tr>
                             <td class="labelColumn"><h:outputLabel value="#{text.surname}" for="surname" /></td>
-                            <td class="inputColumn"><h:inputText id="surname" value="#{registrationManager.surname}" /></td>
+                            <td class="inputColumn"><h:inputText id="surname" class="surname" value="#{registrationManager.surname}" /></td>
                         </tr>
                         <tr>
                             <td class="labelColumn"><h:outputLabel value="#{text.firstName}" for="name" /></td>
@@ -83,7 +84,7 @@
 
                 <!-- Buttons -->
                 <div class="section" id="controlButtons">
-                    <h:commandButton class="button" value="#{text.submit}" action="#{registrationManager.register()}"/>
+                    <h:commandButton id="submitButton" class="submitButton button" value="#{text.submit}" action="#{registrationManager.register()}"/>
                 </div>
             </h:form>
         </div>

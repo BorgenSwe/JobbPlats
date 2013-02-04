@@ -4,16 +4,19 @@ function validateForm() {
         alert("First name must be filled out");
         return false;
     }
+    return true;
 }
 
 $(document).ready(function() {
+   initValidation();
+   
    var competenceNum = 1, availabilityNum = 1;
    
    // Lägger in en bild på länkarna för att lägga till flera kompetenser/tillgängligheter
    $('.addLink').each(function() {
        $(this).html('<img src="resources/add-64.png" alt="Add Competence" width="20" height="20" />');
    });
-
+   
    /**
     * Kompetensrader
     */
