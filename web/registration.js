@@ -1,3 +1,11 @@
+function validateForm() {
+    var x = document.forms["registration"]["surname"].value;
+    if (x == null || x == "") {
+        alert("First name must be filled out");
+        return false;
+    }
+}
+
 $(document).ready(function() {
    var competenceNum = 1, availabilityNum = 1;
    
