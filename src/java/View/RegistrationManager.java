@@ -9,6 +9,10 @@ import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
 import javax.inject.Named;
 
 /**
@@ -18,11 +22,13 @@ import javax.inject.Named;
  */
 @Named(value = "registrationManager")
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class RegistrationManager implements Serializable {
 
     @EJB
     private RegistrationBean registrationBean;
+    
+    private String surname;
     
     private RegistrationDTOImpl registrationDTO;
     private List<CompetenceDTO> competenceNames;
@@ -43,42 +49,54 @@ public class RegistrationManager implements Serializable {
      * GET and SET * 
      ***************/
     public String getSurname() {
-        return registrationDTO.getSurname();
+        System.out.println("GGGGGG surname");
+        return "hej";
     }
+    
     public void setSurname(String surname) {
-        registrationDTO.setSurname(surname);
+        System.out.println("setting surname");
+        this.surname = surname;
+        //registrationDTO.setSurname(surname);
     }
     
     public String getName() {
-        return registrationDTO.getName();
+        return null;
     }
     public void setName(String name) {
         registrationDTO.setName(name);
     }
     
     public String getSsn() {
-        return registrationDTO.getSsn();
+        return null;
     }
     public void setSsn(String ssn) {
         registrationDTO.setSsn(ssn);
     }
     
     public String getEmail() {
-        return registrationDTO.getEmail();
+        return null;
     }
     public void setEmail(String email) {
         registrationDTO.setEmail(email);
     }
     
-    public CompetenceProfileDTO[] getCompetenceProfileDTO() {
+    public CompetenceProfileDTOImpl[] getCompetenceProfileDTOImpl() {
         return registrationDTO.getCompetence();
     }
     
-    public AvailabilityDTO[] getAvailabilityDTO() {
+    public AvailabilityDTOImpl[] getAvailabilityDTOImpl() {
         return registrationDTO.getAvailabilty();
     }
     
     public List<CompetenceDTO> getCompetenceNames() {
+        System.out.println("comp managed");
         return competenceNames;
     }
+    
+    public void register() {
+        System.out.println("reg from managed");
+        registrationBean.register(registrationDTO);
+    }
+    
+    
 }

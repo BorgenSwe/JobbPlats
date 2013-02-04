@@ -4,11 +4,13 @@
  */
 package View;
 
+import Persistence.CompetenceDTO;
+
 /**
  *
  * @author Jocke
  */
 public interface CompetenceProfileDTO {
-    public int getId();
+    public CompetenceDTO getCompetenceDTO();
     public float getYears();
 }

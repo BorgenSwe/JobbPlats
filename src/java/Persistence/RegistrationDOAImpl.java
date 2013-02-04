@@ -41,7 +41,7 @@ public class RegistrationDOAImpl implements RegistrationDOA{
         for(View.CompetenceProfileDTO tempComptenceProfile : registration.getCompetence()){
             CompetenceProfile newCompetenceProfile = new CompetenceProfile();
             newCompetenceProfile.setYears(tempComptenceProfile.getYears());
-            Competence realCompetence = em.find(Competence.class, tempComptenceProfile.getId());
+            Competence realCompetence = em.find(Competence.class, tempComptenceProfile.getCompetenceDTO().getId());
             if(realCompetence == null) {
                 throw new InvalidCompetenceException("One or more of the competences id does not correspond with the Database");
             }

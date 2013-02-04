@@ -65,12 +65,12 @@ public class RegistrationDTOImpl implements RegistrationDTO {
     }
     
     @Override
-    public CompetenceProfileDTO[] getCompetence() {
+    public CompetenceProfileDTOImpl[] getCompetence() {
         return competences;
     }
     
     @Override
-    public AvailabilityDTO[] getAvailabilty() {
+    public AvailabilityDTOImpl[] getAvailabilty() {
         return availabilities;
     }
 }

@@ -33,7 +33,7 @@
                         </tr>
                         <tr>
                             <td class="labelColumn"><h:outputLabel value="#{text.ssn}" for="ssn" /></td>
-                            <td class="inputColumn"><h:inputText id="sn" value="#{registrationManager.ssn}" /></td>
+                            <td class="inputColumn"><h:inputText id="ssn" value="#{registrationManager.ssn}" /></td>
                         </tr>
                     </table>
                 </div>
@@ -50,17 +50,15 @@
 			  <h:outputLabel value="#{text.competence}" for="competence#{ix}" />
 
 			  <!-- Kombobox för detta kompetensindex -->
-			  <h:selectOneMenu id="competence#{ix}" value="#{registrationManager.competenceProfileDTO[ix].id}">
-			      <c:forEach var="element" items="#{registrationManager.competenceNames}">
-				  <f:selectItem itemLabel="#{element.name}" itemValue="#{element.id}" />
-			      </c:forEach>
+			  <h:selectOneMenu id="competence#{ix}" value="#{registrationManager.competenceProfileDTOImpl[ix].competenceDTO}">
+                             <f:selectItems value="#{registrationManager.competenceNames}" />
 			  </h:selectOneMenu>
 
 
 			<!-- År för detta kompetensindex -->
 
 			  <h:outputLabel value="#{text.competenceYears}" for="competence#{ix}Years" />
-			  <h:inputText id="competence#{ix}Years" value="#{registrationManager.competenceProfileDTO[ix].years}" />
+			  <h:inputText id="competence#{ix}Years" value="#{registrationManager.competenceProfileDTOImpl[ix].years}" />
                         </div>
                     </c:forEach>
                 </div>
@@ -74,17 +72,17 @@
                     <c:forEach var="ix" begin="0" end="9" step="1">
 		      <div class="availabilityRow">
 			  <h:outputLabel value="#{text.availabilityFrom}" for="availability#{ix}From" />
-			  <h:inputText id="availability#{ix}From" value="#{registrationManager.availabilityDTO[ix].from}" />
+			  <h:inputText id="availability#{ix}From" value="#{registrationManager.availabilityDTOImpl[ix].from}" />
 
 			  <h:outputLabel value="#{text.availabilityTo}" for="availability#{ix}To" />
-			  <h:inputText id="availability#{ix}To" value="#{registrationManager.availabilityDTO[ix].to}" />
+			  <h:inputText id="availability#{ix}To" value="#{registrationManager.availabilityDTOImpl[ix].to}" />
 		      </div>
 		    </c:forEach>
                 </div>
                
                 <!-- Buttons -->
                 <div class="section" id="controlButtons">
-                    <h:commandButton class="button" value="#{text.submit}" action="success"/>
+                    <h:commandButton class="button" value="#{text.submit}" action="#{registrationManager.register()}"/>
                 </div>
             </h:form>
         </div>

@@ -93,6 +93,6 @@ public class Competence implements Serializable, CompetenceDTO {
      */
     @Override
     public String toString() {
-        return "Persistence.Competence[ id=" + id + " ]";
+        return name;
     }
 }

@@ -1,12 +1,13 @@
 
 package Controller;
 
-import Persistence.Competence;
 import Persistence.CompetenceDTO;
+import Persistence.InvalidCompetenceException;
 import Persistence.RegistrationDOA;
-import java.util.ArrayList;
+import View.RegistrationDTO;
 import java.util.List;
-import javax.ejb.EJB;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -23,6 +24,17 @@ public class RegistrationBean {
     private RegistrationDOA persistence;
     
     public List<CompetenceDTO> getAllCompetences() {
-        return new ArrayList<CompetenceDTO>();//persistence.getAllComptences();
+        System.out.println("return comps");
+        return persistence.getAllComptences();
+    }
+    
+    public void register(RegistrationDTO registration) {
+        try {
+            System.out.println("reg from EJB");
+            persistence.register(registration);
+        } catch (InvalidCompetenceException ex) {
+            System.out.println("kan inte registrera");
+            Logger.getLogger(RegistrationBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

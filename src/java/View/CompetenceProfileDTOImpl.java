@@ -1,6 +1,8 @@
 
 package View;
 
+import Persistence.CompetenceDTO;
+
 /**
  * DTO used for holding a given competence profile coming from the view going 
  * down towards the persistence layer. 
@@ -8,18 +10,18 @@ package View;
  */
 public class CompetenceProfileDTOImpl implements CompetenceProfileDTO {
 
-    private int id;
+    private CompetenceDTO compDTO;
     private float years;
     
     /***************
      * GET and SET * 
      ***************/
     @Override
-    public int getId() {
-        return id;
+    public CompetenceDTO getCompetenceDTO() {
+        return compDTO;
     }
-    public void setId(int id) {
-        this.id = id;
+    public void setCompetenceDTO(CompetenceDTO compDTO) {
+        this.compDTO = compDTO;
     }
 
     @Override
