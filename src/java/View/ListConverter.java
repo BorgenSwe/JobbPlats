@@ -36,6 +36,6 @@ public class ListConverter implements Converter {
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
-    throw new UnsupportedOperationException("Not supported yet.");
+        return ((CompetenceDTO)value).getName();
     }
 }

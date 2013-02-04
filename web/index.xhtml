@@ -52,6 +52,7 @@
 			  <!-- Kombobox för detta kompetensindex -->
 			  <h:selectOneMenu id="competence#{ix}" value="#{registrationManager.competenceProfileDTOImpl[ix].competenceDTO}">
                              <f:selectItems value="#{registrationManager.competenceNames}" />
+                             <f:converter converterId="listConverter" />
 			  </h:selectOneMenu>
 
 
@@ -79,7 +80,7 @@
 		      </div>
 		    </c:forEach>
                 </div>
-               
+
                 <!-- Buttons -->
                 <div class="section" id="controlButtons">
                     <h:commandButton class="button" value="#{text.submit}" action="#{registrationManager.register()}"/>

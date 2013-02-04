@@ -7,7 +7,10 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
 
-
+    <converter>
+        <converter-id>listConverter</converter-id>
+        <converter-class>View.ListConverter</converter-class>
+    </converter>
     <application>
         <locale-config>
             <default-locale>sv</default-locale>
