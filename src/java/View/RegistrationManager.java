@@ -49,8 +49,7 @@ public class RegistrationManager implements Serializable {
      * GET and SET * 
      ***************/
     public String getSurname() {
-        System.out.println("GGGGGG surname");
-        return "hej";
+        return null;
     }
     
     public void setSurname(String surname) {
