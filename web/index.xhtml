@@ -20,21 +20,25 @@
                 <div class="section" id="personInfo">
                     <h2>#{text.personalinformation}</h2>
                     <table>
-                        <tr>
+                        <tr class="surnameRow">
                             <td class="labelColumn"><h:outputLabel value="#{text.surname}" for="surname" /></td>
-                            <td class="inputColumn"><h:inputText id="surname" class="surname" value="#{registrationManager.registrationDTO.surname}" /></td>
+                            <td class="inputColumn"><h:inputText class="surname" value="#{registrationManager.registrationDTO.surname}" /></td>
+                            <td class="errorColumn">#{text.invalid} #{text.surname}</td>
                         </tr>
-                        <tr>
+                        <tr class="fnameRow">
                             <td class="labelColumn"><h:outputLabel value="#{text.firstName}" for="name" /></td>
-                            <td class="inputColumn"><h:inputText id="name" value="#{registrationManager.registrationDTO.name}" /></td>
+                            <td class="inputColumn"><h:inputText class="name" value="#{registrationManager.registrationDTO.name}" /></td>
+                            <td class="errorColumn">#{text.invalid} #{text.firstName}</td>
                         </tr>
-                        <tr>
+                        <tr class="emailRow">
                             <td class="labelColumn"><h:outputLabel value="#{text.email}" for="email" /></td>
-                            <td class="inputColumn"><h:inputText id="email" value="#{registrationManager.registrationDTO.email}" /></td>
+                            <td class="inputColumn"><h:inputText class="email" value="#{registrationManager.registrationDTO.email}" /></td>
+                            <td class="errorColumn">#{text.invalid} #{text.email}</td>
                         </tr>
-                        <tr>
+                        <tr class="ssnRow">
                             <td class="labelColumn"><h:outputLabel value="#{text.ssn}" for="ssn" /></td>
-                            <td class="inputColumn"><h:inputText id="ssn" value="#{registrationManager.registrationDTO.ssn}" /></td>
+                            <td class="inputColumn"><h:inputText class="ssn" value="#{registrationManager.registrationDTO.ssn}" /></td>
+                            <td class="errorColumn">#{text.invalid} #{text.ssn}</td>
                         </tr>
                     </table>
                 </div>
@@ -61,6 +65,8 @@
 
 			  <h:outputLabel value="#{text.competenceYears}" for="competence#{ix}Years" />
 			  <h:inputText id="competence#{ix}Years" value="#{registrationManager.registrationDTO.competence[ix].years}" />
+                        
+                          <h:outputText class="errorDiv" value="#{text.invalid} #{text.years}" />
                         </div>
                     </c:forEach>
                 </div>
@@ -74,10 +80,12 @@
                     <c:forEach var="ix" begin="0" end="9" step="1">
 		      <div class="availabilityRow">
 			  <h:outputLabel value="#{text.availabilityFrom}" for="availability#{ix}From" />
-			  <h:inputText id="availability#{ix}From" value="#{registrationManager.registrationDTO.availability[ix].stringFrom}" />
+			  <h:inputText class="availFrom" id="availability#{ix}From" value="#{registrationManager.registrationDTO.availability[ix].stringFrom}" />
 
 			  <h:outputLabel value="#{text.availabilityTo}" for="availability#{ix}To" />
-			  <h:inputText id="availability#{ix}To" value="#{registrationManager.registrationDTO.availability[ix].stringTo}" />
+			  <h:inputText class="availTo" id="availability#{ix}To" value="#{registrationManager.registrationDTO.availability[ix].stringTo}" />
+                          
+                          <h:outputText class="errorDiv" value="#{text.invalid} #{text.date}" />
 		      </div>
 		    </c:forEach>
                 </div>
