@@ -1,0 +1,13 @@
+insert into competence (competence_id) values (1);
+insert into competence (competence_id) values (2);
+insert into competence (competence_id) values (3);
+insert into competence (competence_id) values (4);
+
+insert into localization (localization_id, competence_for, word_language, word_translation) values (1, 1, 'en', 'Sausage baker');
+insert into localization (localization_id, competence_for, word_language, word_translation) values (2, 1, 'sv', 'Korvbagare');
+insert into localization (localization_id, competence_for, word_language, word_translation) values (3, 2, 'en', 'Pizza baker');
+insert into localization (localization_id, competence_for, word_language, word_translation) values (4, 2, 'sv', 'Pizzabagare');
+insert into localization (localization_id, competence_for, word_language, word_translation) values (5, 3, 'en', 'Balloon baker');
+insert into localization (localization_id, competence_for, word_language, word_translation) values (6, 3, 'sv', 'Ballongbagare');
+insert into localization (localization_id, competence_for, word_language, word_translation) values (7, 4, 'en', 'Monster baker');
+insert into localization (localization_id, competence_for, word_language, word_translation) values (8, 4, 'sv', 'Monsterbagare');
