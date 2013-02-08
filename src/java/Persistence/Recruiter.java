@@ -1,6 +1,7 @@
 package Persistence;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,11 +20,13 @@ public class Recruiter extends Person implements Serializable, RecruiterDTO {
     /**
      * Username of the recruiter
      */
+    @Column(name="username")
     private String username;
     
     /**
      * password of the recruiter
      */
+    @Column(name="password")
     private String password;
     
     /***************

@@ -3,6 +3,9 @@ package Persistence;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.faces.context.FacesContext;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,15 +25,15 @@ public class Competence implements Serializable, CompetenceDTO {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="competence_id")
     private Long id;
 
     /**
      * Name of the competence type. 
      * A list of localizations.
      */
-    //@OneToMany
-    //private List<Localization> name;
-    private String name;
+    @OneToMany(cascade = { CascadeType.ALL }, mappedBy="competenceFor")
+    private List<Localization> name;
     
     /***************
      * GET and SET * 
@@ -44,20 +47,15 @@ public class Competence implements Serializable, CompetenceDTO {
     }
     @Override
     public String getName() {
-        /*String language = FacesContext.getCurrentInstance().getViewRoot().getLocale().toString();
-        
+        String language = FacesContext.getCurrentInstance().getViewRoot().getLocale().toString();
         for(Localization localization:name) {
             if(localization.getLang().equalsIgnoreCase(language)) {
                 return localization.getTrans();
             }
         }
-        
-        return name.get(0).getTrans();*/
-        
-        return name;
+        return name.get(0).getTrans();
     }
     protected void setName(String name) {
-        this.name = name;
     }
 
     /**
@@ -95,6 +93,6 @@ public class Competence implements Serializable, CompetenceDTO {
      */
     @Override
     public String toString() {
-        return name;
+        return getName();
     }
 }

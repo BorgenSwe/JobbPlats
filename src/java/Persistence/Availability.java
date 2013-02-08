@@ -4,10 +4,13 @@ package Persistence;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -24,19 +27,26 @@ public class Availability implements Serializable, AvailabilityDTO {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="availability_id")
     private Long id;
 
     /**
      * From date
      */
     @Temporal(javax.persistence.TemporalType.DATE)
+    @Column(name="from_date")
     private Date datefrom;
     
     /**
      * To date
      */
     @Temporal(javax.persistence.TemporalType.DATE)
+    @Column(name="to_date")
     private Date dateto;
+    
+    @ManyToOne
+    @JoinColumn(name="person_id")
+    private Applicant applicant;
     
     /***************
      * GET and SET * 

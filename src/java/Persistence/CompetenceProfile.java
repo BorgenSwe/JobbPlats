@@ -2,17 +2,21 @@
 package Persistence;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author Jocke
  */
 @Entity
+@Table(name = "competence_profile")
 public class CompetenceProfile implements Serializable, CompetenceProfileDTO {
     private static final long serialVersionUID = 1L;
     
@@ -21,18 +25,25 @@ public class CompetenceProfile implements Serializable, CompetenceProfileDTO {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="competence_profile_id")
     private Long id;
 
     /**
      * Number of years of experience. 1 decimal possible.
      */
+    @Column(name="years_of_experience")
     private float years;
     
     /**
      * 
      */
     @ManyToOne
+    @JoinColumn(name="competence_id")
     private Competence competence;
+    
+    @ManyToOne
+    @JoinColumn(name="person_id")
+    private Applicant applicant;
     
     /***************
      * GET and SET * 

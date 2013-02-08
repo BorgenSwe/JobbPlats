@@ -2,10 +2,13 @@
 package Persistence;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * This entity is used for localization of words in the database. The entity 
@@ -20,16 +23,23 @@ public class Localization implements Serializable {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="localization_id")
     private Long id;
-
+    
+    @ManyToOne
+    @JoinColumn(name="competence_for")
+    private Competence competenceFor;
+    
     /**
      * Language of the localization
      */
+    @Column(name="word_language")
     private String lang;
     
     /**
      * Translation to the language above
      */
+    @Column(name="word_translation")
     private String trans;
     
     /***************

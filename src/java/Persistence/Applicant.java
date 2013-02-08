@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,23 +25,25 @@ public class Applicant extends Person implements Serializable, ApplicantDTO {
     /**
      * Social Security Number (Svenska: Personnummer)
      */
+    @Column(name="ssn")
     private String ssn;
     
     /**
      * Email address
      */
+    @Column(name="email")
     private String email;
     
     /**
      * The dates the applicant is available for work
      */
-    @OneToMany(cascade = { CascadeType.ALL })
+    @OneToMany(cascade = { CascadeType.ALL }, mappedBy="applicant")
     private List<Availability> availability;
     
     /**
      * The competence and experience of the applicant
      */
-    @OneToMany(cascade = { CascadeType.ALL })
+    @OneToMany(cascade = { CascadeType.ALL }, mappedBy="applicant")
     private List<CompetenceProfile> competence;
     
     /***************

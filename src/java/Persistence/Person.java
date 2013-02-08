@@ -2,6 +2,7 @@
 package Persistence;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.DiscriminatorValue;
@@ -29,16 +30,19 @@ public class Person implements PersonDTO, Serializable {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="person_id")
     protected Long id;
     
     /**
      * First name of the person 
      */
+    @Column(name="name")
     protected String name;
     
     /**
      * Surname of the person
      */
+    @Column(name="surname")
     protected String surname;
 
     /***************
