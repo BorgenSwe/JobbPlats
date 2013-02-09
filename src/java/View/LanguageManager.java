@@ -1,9 +1,11 @@
 
 package View;
 
-import java.util.Locale;
+import Controller.LanguageBean;
+import java.io.Serializable;
 import javax.annotation.ManagedBean;
-import javax.faces.context.FacesContext;
+import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 /**
@@ -12,19 +14,19 @@ import javax.inject.Named;
  */
 @Named(value = "languageManager")
 @ManagedBean
-public class LanguageManager {
+@RequestScoped
+public class LanguageManager implements Serializable {
 
+    @EJB
+    private LanguageBean languageBean;
+    
     /**
      * Creates a new instance of LanguageManager
      */
     public LanguageManager() {
     }
     
-    public void change() {
-        System.out.println("Nuvarande locale: " + FacesContext.getCurrentInstance().getViewRoot().getLocale());
-        //FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale("sv"));
-        if (FacesContext.getCurrentInstance().getViewRoot().getLocale().getLanguage().equals(Locale.ENGLISH.getLanguage())) {
-            FacesContext.getCurrentInstance().getViewRoot().setLocale(Locale.FRENCH);
-        } else FacesContext.getCurrentInstance().getViewRoot().setLocale(Locale.ENGLISH);
+    public void changeLanguage(String lang) {
+        languageBean.changeLanguage(lang);
     }
 }

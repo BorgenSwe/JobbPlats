@@ -12,7 +12,7 @@ import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 /**
@@ -41,6 +41,7 @@ public class RegistrationManager implements Serializable {
     private void init() {
         registrationDTO = new RegistrationDTOImpl();
         competenceNames = registrationBean.getAllCompetences();
+        FacesContext.getCurrentInstance().getExternalContext().getSession(true);
     }
     
     /***************
