@@ -1,12 +1,3 @@
-function validateForm() {
-    var x = document.forms["registration"]["surname"].value;
-    if (x == null || x == "") {
-        alert("First name must be filled out");
-        return false;
-    }
-    return true;
-}
-
 $(document).ready(function() {
    initValidation();
    
