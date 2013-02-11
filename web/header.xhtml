@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <body>
+        <ui:composition>
+            <div id="language">
+                <h:form id="langForm">
+                    <h:commandLink class="langLink" action="#{languageManager.changeLanguage('sv')}" ><img src="resources/gfx/flag-sv.png" alt="Engelska"/></h:commandLink>
+                    <h:commandLink class="langLink" action="#{languageManager.changeLanguage('en')}" ><img src="resources/gfx/flag-en.png" alt="Engelska"/></h:commandLink>
+                </h:form>
+            </div>
+	</ui:composition>
+    </body>
+</html>

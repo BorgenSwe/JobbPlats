@@ -16,7 +16,6 @@ body {
     background: linear-gradient(135deg,  #78bdd0 0%,#99cedd 59%,#afdbe7 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#78bdd0', endColorstr='#afdbe7',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
-
 #content {
     width:450px;
     margin: 0px auto 0px auto;

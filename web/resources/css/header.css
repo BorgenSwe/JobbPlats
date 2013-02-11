@@ -1,0 +1,15 @@
+/* 
+    Document   : header
+    Created on : Feb 11, 2013, 11:37:55 AM
+    Author     : Jonas
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#language { 
+    float:right;
+    margin-top:-12px;
+}
+.langLink {
+    margin: 2px;
+}
