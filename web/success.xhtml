@@ -7,6 +7,8 @@
         <h:outputScript library="js" name="registration.js"/>
         <h:outputScript library="js" name="validation.js"/>
         <h:outputStylesheet library="css" name="registration.css"/>
+        <h:outputStylesheet library="css" name="header.css"/>
+        <h:outputStylesheet library="css" name="footer.css"/>
         <title>#{text.title} - #{text.success}</title>
     </h:head>
     <h:body>
@@ -22,6 +24,12 @@
                 <h2>#{text.success}</h2>
                 <p>#{text.registrationSuccessful}</p>
             </div>
+        </div>
+        
+        <div id="footer">
+            <ui:insert name="footer" >
+                <ui:include src="/footer.xhtml" />
+            </ui:insert>
         </div>
     </h:body>
 </html>
