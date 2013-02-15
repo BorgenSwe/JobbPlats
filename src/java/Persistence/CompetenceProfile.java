@@ -71,6 +71,9 @@ public class CompetenceProfile implements Serializable, CompetenceProfileDTO {
     protected void setCompetenceType(Competence competence) {
         this.competence = competence;
     }
+    protected void setApplicant(Applicant applicant) {
+        this.applicant = applicant;
+    }
     
     /**
      * Generates a hash code

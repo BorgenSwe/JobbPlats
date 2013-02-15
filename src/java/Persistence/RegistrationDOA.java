@@ -5,7 +5,7 @@ import View.RegistrationDTO;
 import java.util.List;
 
 /**
- * Public interface for the registration in the Persistance layer
+ * Public interface for the registration in the persistence layer
  * @author Jocke
  */
 public interface RegistrationDOA{
@@ -15,8 +15,14 @@ public interface RegistrationDOA{
      * @param registration The registration to store.
      * @throws InvalidCompetenceException If the registration contains invalid 
      * competences.
+     * @throws NoAvailabilityException If the registration contains no 
+     * availabilities.
+     * @throws RegistrationNotValidException The data in the registration 
+     * parameter is not valid.
      */
-    public void register(RegistrationDTO registration) throws InvalidCompetenceException;
+    public void register(RegistrationDTO registration) throws 
+            InvalidCompetenceException, NoAvailabilityException, 
+            RegistrationNotValidException;
     
     /**
      * Retrieves and returns all competence types from storage.

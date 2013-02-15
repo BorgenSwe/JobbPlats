@@ -72,6 +72,9 @@ public class Availability implements Serializable, AvailabilityDTO {
     protected void setDateto(Date dateto) {
         this.dateto = dateto;
     }
+    protected void setApplicant(Applicant applicant) {
+        this.applicant = applicant;
+    }
     
     /**
      * Generates a hash code
@@ -110,5 +113,7 @@ public class Availability implements Serializable, AvailabilityDTO {
     public String toString() {
         return "Persistence.Availability[ id=" + id + " ]";
     }
+
+    
     
 }
