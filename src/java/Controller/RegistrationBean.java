@@ -63,6 +63,10 @@ public class RegistrationBean {
         } catch (InvalidCompetenceException ex) {
             Logger.getLogger(RegistrationBean.class.getName()).log(Level.SEVERE, null, ex);
             throw new RegistrationUnsuccessfulException("The registration data is invalid. Caused by:" + ex.getMessage());
+        } catch(Exception ex) {
+            // Det här är möjligtvis inte final
+            Logger.getLogger(RegistrationBean.class.getName()).log(Level.SEVERE, null, ex);
+            throw new RegistrationUnsuccessfulException("The registration data is invalid. Caused by:" + ex.getMessage());
         }
         return "success";
     }

@@ -1,7 +1,7 @@
 function initValidation() {
     // Regexps
-    var nameTest = /[A-z -]+/g;
-    var emailTest = /[A-z0-9.-_]+@[A-z0-9.-_]+.[A-z.-_]+/g
+    var nameTest = /[A-z -'ÅåÄäÖöÆæØøÁáÉéÜüÐðÞþ]+/g;
+    var emailTest = /[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]/g
     var ssnTest = /[0-9]{10}/g;
     var compTest = /[0-9]*.?[0-9]*/g;
     var availTest = /[0-9]{4}-[0-9]{2}-[0-9]{2}/g;
