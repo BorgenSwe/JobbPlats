@@ -13,3 +13,6 @@
 .langLink {
     margin: 2px;
 }
+.langLink:hover {
+    opacity:0.7;
+}
