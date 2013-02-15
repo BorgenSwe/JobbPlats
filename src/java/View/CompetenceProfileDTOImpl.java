@@ -2,6 +2,9 @@
 package View;
 
 import Persistence.CompetenceDTO;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
 
 /**
  * DTO used for holding a given competence profile coming from the view going 
@@ -11,6 +14,9 @@ import Persistence.CompetenceDTO;
 public class CompetenceProfileDTOImpl implements CompetenceProfileDTO {
 
     private CompetenceDTO compDTO;
+    @DecimalMin("0.00")
+    @DecimalMax("100.00")
+    @Digits(integer=3, fraction=2)
     private float years;
     
     public CompetenceProfileDTOImpl(){

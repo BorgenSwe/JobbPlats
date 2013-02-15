@@ -1,6 +1,8 @@
 
 package View;
 
+import javax.validation.constraints.Pattern;
+
 /**
  * Holds data about a registration as it is sent from the view down to the 
  * persistence layer. 
@@ -10,9 +12,13 @@ public class RegistrationDTOImpl implements RegistrationDTO {
     
     private static int CAPACITY = 10;
     
+    @Pattern(regexp="^[A-ZÅÄÖÆØÁÉÜÐÞ]'?[- a-zA-ZÅåÄäÖöÆæØøÁáÉéÜüÐðÞþ]+$", message="Invalid first name")
     private String name;
+    @Pattern(regexp="^[A-ZÅÄÖÆØÁÉÜÐÞ]'?[- a-zA-ZÅåÄäÖöÆæØøÁáÉéÜüÐðÞþ]+$", message="Invalid surname")
     private String surname;
+    @Pattern(regexp="[0-9]{8}-?[0-9]{4}", message="Invalid ssn")
     private String ssn;
+    @Pattern(regexp="[\\w\\.-]*[a-zA-Z0-9_]@[\\w\\.-]*[a-zA-Z0-9]\\.[a-zA-Z][a-zA-Z\\.]*[a-zA-Z]", message="Invalid email")
     private String email;
     private CompetenceProfileDTOImpl[] competences;
     private AvailabilityDTOImpl[] availabilities;

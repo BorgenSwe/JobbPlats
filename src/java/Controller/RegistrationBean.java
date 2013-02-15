@@ -38,6 +38,10 @@ public class RegistrationBean {
      * @param registration 
      */
     public String register(RegistrationDTOImpl registration) throws RegistrationUnsuccessfulException {
+        if (registration.getSsn().length() == 13) {
+            registration.setSsn(registration.getSsn().substring(0, 8) + registration.getSsn().substring(9, 13));
+        }
+        
         try {
             View.CompetenceProfileDTO[] comps = registration.getCompetence();
             List<View.CompetenceProfileDTO> newComps = new LinkedList<View.CompetenceProfileDTO>();
