@@ -13,9 +13,10 @@ import javax.validation.constraints.Pattern;
 public class AvailabilityDTOImpl implements AvailabilityDTO {
     private Date from;
     private Date to;
-    @Pattern(regexp="[0-9]{4}-[0-9]{2}-[0-9]{2}|^$", message="Invalid from date")
-    private String stringTo;
     @Pattern(regexp="[0-9]{4}-[0-9]{2}-[0-9]{2}|^$", message="Invalid to date")
+    private String stringTo;
+    @Pattern(regexp="[0-9]{4}-[0-9]{2}-[0-9]{2}|^$", 
+                                                    message="Invalid from date")
     private String stringFrom;
     
     private Date parseDate(String str) {

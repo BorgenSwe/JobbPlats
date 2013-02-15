@@ -2,12 +2,9 @@
 package View;
 
 import Controller.RegistrationBean;
-import Controller.RegistrationUnsuccessfulException;
 import Persistence.CompetenceDTO;
 import java.io.Serializable;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -66,12 +63,6 @@ public class RegistrationManager implements Serializable {
      * Registers the job application
      */
     public String register() {
-        String result = "failure";
-        try {
-            result = registrationBean.register(registrationDTO);
-        } catch (RegistrationUnsuccessfulException ex) {
-            Logger.getLogger(RegistrationManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return result;
+        return registrationBean.register(registrationDTO);
     }
 }

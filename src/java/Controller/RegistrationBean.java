@@ -3,7 +3,9 @@ package Controller;
 
 import Persistence.CompetenceDTO;
 import Persistence.InvalidCompetenceException;
+import Persistence.NoAvailabilityException;
 import Persistence.RegistrationDOA;
+import Persistence.RegistrationNotValidException;
 import View.AvailabilityDTOImpl;
 import View.RegistrationDTOImpl;
 import java.util.LinkedList;
@@ -37,14 +39,16 @@ public class RegistrationBean {
      * Registers a job application 
      * @param registration 
      */
-    public String register(RegistrationDTOImpl registration) throws RegistrationUnsuccessfulException {
+    public String register(RegistrationDTOImpl registration) {
         if (registration.getSsn().length() == 13) {
-            registration.setSsn(registration.getSsn().substring(0, 8) + registration.getSsn().substring(9, 13));
+            registration.setSsn(registration.getSsn().substring(0, 8) + 
+                                        registration.getSsn().substring(9, 13));
         }
         
         try {
             View.CompetenceProfileDTO[] comps = registration.getCompetence();
-            List<View.CompetenceProfileDTO> newComps = new LinkedList<View.CompetenceProfileDTO>();
+            List<View.CompetenceProfileDTO> newComps = 
+                                    new LinkedList<View.CompetenceProfileDTO>();
             for (int i = 0; i < comps.length; i++) {
                 if (comps[i].getYears() > 0) {
                     newComps.add(comps[i]);
@@ -54,7 +58,8 @@ public class RegistrationBean {
                     new View.CompetenceProfileDTOImpl[newComps.size()]));
             
             AvailabilityDTOImpl[] avails = registration.getAvailability();
-            List<View.AvailabilityDTOImpl> newAvails = new LinkedList<View.AvailabilityDTOImpl>();
+            List<View.AvailabilityDTOImpl> newAvails = 
+                                    new LinkedList<View.AvailabilityDTOImpl>();
             for (int i = 0; i < avails.length; i++) {
                 if (avails[i].getFrom() != null) {
                     newAvails.add(avails[i]);
@@ -65,12 +70,22 @@ public class RegistrationBean {
             
             persistence.register(registration);
         } catch (InvalidCompetenceException ex) {
-            Logger.getLogger(RegistrationBean.class.getName()).log(Level.SEVERE, null, ex);
-            throw new RegistrationUnsuccessfulException("The registration data is invalid. Caused by:" + ex.getMessage());
+            Logger.getLogger(RegistrationBean.class.getName()).log(
+                                                        Level.SEVERE, null, ex);
+            return "failure";
+        } catch (NoAvailabilityException ex) {
+            Logger.getLogger(RegistrationBean.class.getName()).log(
+                                                        Level.SEVERE, null, ex);
+            return "failure";
+        } catch (RegistrationNotValidException ex) {
+            Logger.getLogger(RegistrationBean.class.getName()).log(
+                                                        Level.SEVERE, null, ex);
+            return "failure";
         } catch(Exception ex) {
             // Det här är möjligtvis inte final
-            Logger.getLogger(RegistrationBean.class.getName()).log(Level.SEVERE, null, ex);
-            throw new RegistrationUnsuccessfulException("The registration data is invalid. Caused by:" + ex.getMessage());
+            Logger.getLogger(RegistrationBean.class.getName()).log(
+                                                        Level.SEVERE, null, ex);
+            return "failure";
         }
         return "success";
     }
