@@ -2,7 +2,6 @@ $(document).ready(function() {
    initValidation();
    
    var competenceNum = 1, availabilityNum = 1;
-   var dateFormat = $('#dateFormat');
    
    // Lägger in en bild på länkarna för att lägga till flera kompetenser/tillgängligheter
    $('.addLink').each(function() {
@@ -75,19 +74,6 @@ $(document).ready(function() {
       }
    });
    
-   // Tooltip för datumformatering
-   $(this).mousemove(function(e) {
-      dateFormat.css('top', e.pageY - dateFormat.outerHeight());
-      dateFormat.css('left', e.pageX); 
-   });
-   
-   // av nån anledning spammas det enter- och leaveevents
-   $('#availabilityRows').mouseenter(function() {
-       dateFormat.show();
-       console.log("enter");
-   }).mouseleave(function() {
-       dateFormat.hide();
-       console.log("leave");
-   });
+   $('.datepicker').datepicker({ dateFormat: "yy-mm-dd" });
 });
 

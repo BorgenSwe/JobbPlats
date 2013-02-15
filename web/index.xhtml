@@ -6,9 +6,11 @@
       xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
-        <script src="http://code.jquery.com/jquery-latest.js"></script>
-        <h:outputScript library="js" name="registration.js"/>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
         <h:outputScript library="js" name="validation.js"/>
+        <h:outputScript library="js" name="registration.js"/>
         <h:outputStylesheet library="css" name="registration.css"/>
         <h:outputStylesheet library="css" name="header.css"/>
         <h:outputStylesheet library="css" name="footer.css"/>
@@ -89,10 +91,10 @@
                         <c:forEach var="ix" begin="0" end="9" step="1">
                           <div class="availabilityRow">
                               <h:outputLabel value="#{text.availabilityFrom}" for="availability#{ix}From" />
-                              <h:inputText class="availFrom" id="availability#{ix}From" value="#{registrationManager.registrationDTO.availability[ix].stringFrom}" />
+                              <h:inputText class="datepicker availFrom" id="availability#{ix}From" value="#{registrationManager.registrationDTO.availability[ix].stringFrom}" />
 
                               <h:outputLabel value="#{text.availabilityTo}" for="availability#{ix}To" />
-                              <h:inputText class="availTo" id="availability#{ix}To" value="#{registrationManager.registrationDTO.availability[ix].stringTo}" />
+                              <h:inputText class="datepicker availTo" id="availability#{ix}To" value="#{registrationManager.registrationDTO.availability[ix].stringTo}" />
 
                               <h:outputText class="errorDiv" value="#{text.invalid} #{text.date}" />
                           </div>
@@ -110,11 +112,6 @@
             <ui:insert name="footer" >
                 <ui:include src="/footer.xhtml" />
             </ui:insert>
-        </div>
-        
-        <div id="dateFormat">
-            <span class="title">Date format</span>
-            <span class="text">YYYY-MM-DD</span>
         </div>
     </h:body>
 </html>
