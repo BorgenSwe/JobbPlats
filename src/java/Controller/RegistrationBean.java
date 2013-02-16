@@ -64,7 +64,7 @@ public class RegistrationBean {
                 if (avails[i].getFrom() != null) {
                     if (avails[i].getTo() != null) {
                         if (avails[i].getFrom().compareTo(avails[i].getTo()) >= 0) {
-                            throw new InvalidAvailabilityException("The from date: " + avails[i].getStringFrom() + " must occur before the to date: " + avails[i].getStringTo());
+                            throw new InvalidAvailabilityException("The 'from date': " + avails[i].getStringFrom() + " must occur before the 'to date': " + avails[i].getStringTo());
                         }
                     }
                     
