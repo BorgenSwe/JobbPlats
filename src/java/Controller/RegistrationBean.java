@@ -62,6 +62,12 @@ public class RegistrationBean {
                                     new LinkedList<View.AvailabilityDTOImpl>();
             for (int i = 0; i < avails.length; i++) {
                 if (avails[i].getFrom() != null) {
+                    if (avails[i].getTo() != null) {
+                        if (avails[i].getFrom().compareTo(avails[i].getTo()) >= 0) {
+                            throw new InvalidAvailabilityException("The from date: " + avails[i].getStringFrom() + " must occur before the to date: " + avails[i].getStringTo());
+                        }
+                    }
+                    
                     newAvails.add(avails[i]);
                 }
             }
@@ -78,6 +84,10 @@ public class RegistrationBean {
                                                         Level.SEVERE, null, ex);
             return "failure";
         } catch (RegistrationNotValidException ex) {
+            Logger.getLogger(RegistrationBean.class.getName()).log(
+                                                        Level.SEVERE, null, ex);
+            return "failure";
+        } catch (InvalidAvailabilityException ex) {
             Logger.getLogger(RegistrationBean.class.getName()).log(
                                                         Level.SEVERE, null, ex);
             return "failure";
