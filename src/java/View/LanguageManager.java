@@ -26,6 +26,10 @@ public class LanguageManager implements Serializable {
     public LanguageManager() {
     }
     
+    /**
+     * Uses an EJB to change the language. 
+     * @param lang Locale to be set. 
+     */
     public void changeLanguage(String lang) {
         languageBean.changeLanguage(lang);
     }

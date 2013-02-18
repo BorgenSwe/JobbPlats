@@ -8,10 +8,14 @@ import Persistence.RegistrationDOA;
 import Persistence.RegistrationNotValidException;
 import View.AvailabilityDTOImpl;
 import View.RegistrationDTOImpl;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -23,9 +27,25 @@ import javax.inject.Inject;
  */
 @Stateless
 public class RegistrationBean {
-
+    
+    private static final Logger LOGGER = Logger.getLogger(
+                                              RegistrationBean.class.getName());
+    
     @Inject
     private RegistrationDOA persistence;
+    
+    @PostConstruct
+    void initilize() {
+        try {
+                FileHandler fileHandler = new FileHandler("%h/log.txt");
+                fileHandler.setFormatter(new SimpleFormatter());
+                RegistrationBean.LOGGER.addHandler(fileHandler);
+            } catch (IOException ex) {
+                System.err.println(ex);
+            } catch (SecurityException ex) {
+                System.err.println(ex);
+            }
+    }
     
     /**
      * Retrieves all possible types of competences from the persistence
@@ -63,8 +83,13 @@ public class RegistrationBean {
             for (int i = 0; i < avails.length; i++) {
                 if (avails[i].getFrom() != null) {
                     if (avails[i].getTo() != null) {
-                        if (avails[i].getFrom().compareTo(avails[i].getTo()) >= 0) {
-                            throw new InvalidAvailabilityException("The 'from date': " + avails[i].getStringFrom() + " must occur before the 'to date': " + avails[i].getStringTo());
+                        if (avails[i].getFrom().compareTo(avails[i]
+                                                               .getTo()) >= 0) {
+                            throw new InvalidAvailabilityException(
+                                    "The 'from date': " + 
+                                    avails[i].getStringFrom() + 
+                                    " must occur before the 'to date': " + 
+                                    avails[i].getStringTo());
                         }
                     }
                     
@@ -76,25 +101,19 @@ public class RegistrationBean {
             
             persistence.register(registration);
         } catch (InvalidCompetenceException ex) {
-            Logger.getLogger(RegistrationBean.class.getName()).log(
-                                                        Level.SEVERE, null, ex);
+            RegistrationBean.LOGGER.log(Level.SEVERE, ex.toString());
             return "failure";
         } catch (NoAvailabilityException ex) {
-            Logger.getLogger(RegistrationBean.class.getName()).log(
-                                                        Level.SEVERE, null, ex);
+            RegistrationBean.LOGGER.log(Level.SEVERE, ex.toString());
             return "failure";
         } catch (RegistrationNotValidException ex) {
-            Logger.getLogger(RegistrationBean.class.getName()).log(
-                                                        Level.SEVERE, null, ex);
+           RegistrationBean.LOGGER.log(Level.SEVERE, ex.toString());
             return "failure";
         } catch (InvalidAvailabilityException ex) {
-            Logger.getLogger(RegistrationBean.class.getName()).log(
-                                                        Level.SEVERE, null, ex);
+            RegistrationBean.LOGGER.log(Level.SEVERE, ex.toString());
             return "failure";
         } catch(Exception ex) {
-            // Det här är möjligtvis inte final
-            Logger.getLogger(RegistrationBean.class.getName()).log(
-                                                        Level.SEVERE, null, ex);
+            RegistrationBean.LOGGER.log(Level.SEVERE, ex.toString());
             return "failure";
         }
         return "success";
