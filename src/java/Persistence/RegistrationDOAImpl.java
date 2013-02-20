@@ -1,11 +1,16 @@
 
 package Persistence;
 
+import Controller.RegistrationBean;
 import View.RegistrationDTO;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -16,9 +21,25 @@ import javax.persistence.Query;
  * @author Jocke
  */
 public class RegistrationDOAImpl implements RegistrationDOA{
+    
+    private static final Logger LOGGER = Logger.getLogger(
+                                              RegistrationBean.class.getName());
 
     @PersistenceContext(unitName = "JobbPlatsPU")
     private EntityManager em;
+    
+    @PostConstruct
+    void initilize() {
+        try {
+                FileHandler fileHandler = new FileHandler("%h/log.txt");
+                fileHandler.setFormatter(new SimpleFormatter());
+                RegistrationDOAImpl.LOGGER.addHandler(fileHandler);
+            } catch (IOException ex) {
+                System.err.println(ex);
+            } catch (SecurityException ex) {
+                System.err.println(ex);
+            }
+    }
     
     /**
      * Register the applicant in the RegistrationDTO object and stores it in the 
@@ -88,7 +109,7 @@ public class RegistrationDOAImpl implements RegistrationDOA{
         applicant.setCompetence(competences);
         
         em.persist(applicant);
-        Logger.getLogger(RegistrationDOAImpl.class.getName()).log(Level.INFO, 
+        RegistrationDOAImpl.LOGGER.log(Level.INFO, 
                 "Applicant stored in persistent context: " + applicant, this);
     }
 
