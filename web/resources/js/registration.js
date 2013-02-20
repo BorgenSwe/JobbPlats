@@ -74,6 +74,24 @@ $(document).ready(function() {
       }
    });
    
-   $('.datepicker').datepicker({ dateFormat: "yy-mm-dd" });
+   // Från och med
+   $('.availFrom').each(function(ix) {
+       $(this).datepicker({
+           dateFormat: 'yy-mm-dd',
+           onClose: function(selectedDate) {
+               $('.availTo[alt="' + ix + '"]').datepicker("option", "minDate", selectedDate);
+           }
+       });
+   });
+   
+   // Till och med
+   $('.availTo').each(function(ix) {
+       $(this).datepicker({
+           dateFormat: 'yy-mm-dd',
+           onClose: function(selectedDate) {
+               $('.availFrom[alt="' + ix + '"]').datepicker("option", "maxDate", selectedDate);
+           }
+       });
+   });
 });
 

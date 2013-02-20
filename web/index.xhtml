@@ -91,10 +91,10 @@
                         <c:forEach var="ix" begin="0" end="9" step="1">
                           <div class="availabilityRow">
                               <h:outputLabel value="#{text.availabilityFrom}" for="availability#{ix}From" />
-                              <h:inputText class="datepicker availFrom" id="availability#{ix}From" value="#{registrationManager.registrationDTO.availability[ix].stringFrom}" />
+                              <h:inputText class="datepicker availFrom" alt="#{ix}" id="availability#{ix}From" value="#{registrationManager.registrationDTO.availability[ix].stringFrom}" />
 
                               <h:outputLabel value="#{text.availabilityTo}" for="availability#{ix}To" />
-                              <h:inputText class="datepicker availTo" id="availability#{ix}To" value="#{registrationManager.registrationDTO.availability[ix].stringTo}" />
+                              <h:inputText class="datepicker availTo" alt="#{ix}" id="availability#{ix}To" value="#{registrationManager.registrationDTO.availability[ix].stringTo}" />
 
                               <h:outputText class="errorDiv" value="#{text.invalid} #{text.date}" />
                           </div>
