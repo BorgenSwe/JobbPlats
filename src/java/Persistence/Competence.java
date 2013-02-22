@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 
 /**
  * This entity represent a type of competence available in the system.
- * @author Jocke
+ * @author Joakim Borgström
  */
 @Entity
 public class Competence implements Serializable, CompetenceDTO {
@@ -76,12 +76,8 @@ public class Competence implements Serializable, CompetenceDTO {
      */
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Competence)) {
-            return false;
-        }
         Competence other = (Competence) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (!this.id.equals(other.id)) {
             return false;
         }
         return true;

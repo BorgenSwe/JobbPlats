@@ -12,8 +12,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- *
- * @author Jocke
+ * This entity represents a competence that a applicant may have. This include
+ * the time he or she has spent working in the field and the field itself.
+ * @author Joakim Borgström
  */
 @Entity
 @Table(name = "competence_profile")

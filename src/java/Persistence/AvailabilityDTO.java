@@ -5,7 +5,7 @@ import java.util.Date;
 
 /**
  * DTO of Availability
- * @author Joakim
+ * @author Joakim Borgström
  */
 public interface AvailabilityDTO {
     /***************
