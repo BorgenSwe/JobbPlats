@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 
 /**
  * This entity represent a applicant for a job
- * @author Jocke
+ * @author Joakim Borgström
  */
 @Entity
 @DiscriminatorValue("A")

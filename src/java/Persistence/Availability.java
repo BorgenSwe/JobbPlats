@@ -16,7 +16,7 @@ import javax.persistence.Temporal;
 /**
  * This entity represent a period of time where an applicant is available for 
  * work
- * @author Jocke
+ * @author Joakim Borgström
  */
 @Entity
 public class Availability implements Serializable, AvailabilityDTO {

@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * DTO of applicant
- * @author Joakim
+ * @author Joakim Borgström
  */
 public interface ApplicantDTO extends PersonDTO{
     /***************
