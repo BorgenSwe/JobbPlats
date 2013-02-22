@@ -3,7 +3,7 @@ package Persistence;
 
 /**
  * This exception is thrown when a registration DTO contains no availabilities.
- * @author Joakim
+ * @author Joakim Borgström
  */
 public class NoAvailabilityException extends Exception {
 

@@ -4,7 +4,7 @@ package Persistence;
 /**
  * This exception is thrown when a competence id does not match with any 
  * competence in the database
- * @author Jocke
+ * @author Joakim Borgström
  */
 public class InvalidCompetenceException extends Exception {
 

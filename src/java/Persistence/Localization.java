@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 /**
  * This entity is used for localization of words in the database. The entity 
  * contains the language of the translation and the translated text.
- * @author Joakim
+ * @author Joakim Borgström
  */
 @Entity
 public class Localization implements Serializable {
