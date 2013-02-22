@@ -17,7 +17,7 @@ import javax.persistence.Table;
 /**
  * This abstract class represents a person and is extended by Applicant 
  * and Recruiter
- * @author Jocke
+ * @author Joakim Borgström
  */
 @Entity
 @Table(name="Person")

@@ -18,9 +18,9 @@ import javax.persistence.Query;
 /**
  * Implementation of the RegistrationDOA. This will handle all transactions made 
  * during the registration of an application by a user.
- * @author Jocke
+ * @author Joakim Borgström
  */
-public class RegistrationDOAImpl implements RegistrationDOA{
+public class PersistenceDAO implements RegistrationDAO, AdministrationDAO{
     
     private static final Logger LOGGER = Logger.getLogger(
                                               RegistrationBean.class.getName());
@@ -33,7 +33,7 @@ public class RegistrationDOAImpl implements RegistrationDOA{
         try {
                 FileHandler fileHandler = new FileHandler("%h/log.txt");
                 fileHandler.setFormatter(new SimpleFormatter());
-                RegistrationDOAImpl.LOGGER.addHandler(fileHandler);
+                PersistenceDAO.LOGGER.addHandler(fileHandler);
             } catch (IOException ex) {
                 System.err.println(ex);
             } catch (SecurityException ex) {
@@ -109,7 +109,7 @@ public class RegistrationDOAImpl implements RegistrationDOA{
         applicant.setCompetence(competences);
         
         em.persist(applicant);
-        RegistrationDOAImpl.LOGGER.log(Level.INFO, 
+        PersistenceDAO.LOGGER.log(Level.INFO, 
                 "Applicant stored in persistent context: " + applicant, this);
     }
 
@@ -122,5 +122,23 @@ public class RegistrationDOAImpl implements RegistrationDOA{
         Query query = em.createQuery(
            "select c from Competence c");
         return query.getResultList(); 
+    }
+
+    /**
+     * Get a list of applicants matching the given filter. 
+     * If the filter parameter equals <code>null</code> all applicants are 
+     * returned.
+     * @param filter The filter to be used when getting the applicants
+     * @return A list of applicants
+     */
+    @Override
+    public List<ApplicantDTO> getApplicants(ApplicantFilter filter) {
+        List<ApplicantDTO> applicants 
+                = em.createQuery("select a from Applicant a").getResultList();
+        
+        if(filter != null){
+            return filter.filter(applicants);
+        }
+        return applicants;
     }
 }

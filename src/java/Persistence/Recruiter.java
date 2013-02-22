@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 
 /**
  * This entity represent a recruiter working at the company.
- * @author Jocke
+ * @author Joakim Borgström
  */
 @Entity
 @DiscriminatorValue("R")

@@ -3,7 +3,7 @@ package Persistence;
 
 /**
  * DTO of Person
- * @author Joakim
+ * @author Joakim Borgström
  */
 public interface PersonDTO {
     /***************
