@@ -4,7 +4,7 @@ package Controller;
 import Persistence.CompetenceDTO;
 import Persistence.InvalidCompetenceException;
 import Persistence.NoAvailabilityException;
-import Persistence.RegistrationDOA;
+import Persistence.RegistrationDAO;
 import Persistence.RegistrationNotValidException;
 import View.AvailabilityDTOImpl;
 import View.RegistrationDTOImpl;
@@ -32,7 +32,7 @@ public class RegistrationBean {
                                               RegistrationBean.class.getName());
     
     @Inject
-    private RegistrationDOA persistence;
+    private RegistrationDAO persistence;
     
     @PostConstruct
     void initilize() {

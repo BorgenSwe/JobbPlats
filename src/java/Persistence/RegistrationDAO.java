@@ -6,9 +6,9 @@ import java.util.List;
 
 /**
  * Public interface for the registration in the persistence layer
- * @author Jocke
+ * @author Joakim Borgström
  */
-public interface RegistrationDOA{
+public interface RegistrationDAO{
     /**
      * Register the applicant in the RegistrationDTO object and stores it in the 
      * data base. 

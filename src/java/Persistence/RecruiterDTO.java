@@ -2,8 +2,8 @@
 package Persistence;
 
 /**
- *
- * @author Joakim
+ * DTO of Recruiter
+ * @author Joakim Borgström
  */
 public interface RecruiterDTO extends PersonDTO{
     /***************

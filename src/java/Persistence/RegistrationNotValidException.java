@@ -3,7 +3,7 @@ package Persistence;
 
 /**
  * Is thrown when the data in the RegistrationDTO object is not valid.
- * @author Joakim
+ * @author Joakim Borgström
  */
 public class RegistrationNotValidException extends Exception {
 
