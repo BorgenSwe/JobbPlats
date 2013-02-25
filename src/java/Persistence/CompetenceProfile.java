@@ -35,9 +35,6 @@ public class CompetenceProfile implements Serializable, CompetenceProfileDTO {
     @Column(name="years_of_experience")
     private float years;
     
-    /**
-     * 
-     */
     @ManyToOne
     @JoinColumn(name="competence_id")
     private Competence competence;
@@ -46,9 +43,7 @@ public class CompetenceProfile implements Serializable, CompetenceProfileDTO {
     @JoinColumn(name="person_id")
     private Applicant applicant;
     
-    /***************
-     * GET and SET * 
-     ***************/
+    /* GET and SET */
     @Override
     public Long getId() {
         return id;
@@ -63,12 +58,10 @@ public class CompetenceProfile implements Serializable, CompetenceProfileDTO {
     protected void setYears(float years) {
         this.years = years;
     }
-
     @Override
     public Competence getCompetenceType() {
         return competence;
     }
-
     protected void setCompetenceType(Competence competence) {
         this.competence = competence;
     }

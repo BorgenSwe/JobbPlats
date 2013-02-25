@@ -20,7 +20,7 @@ import javax.persistence.Query;
  * during the registration of an application by a user.
  * @author Joakim Borgström
  */
-public class PersistenceDAO implements RegistrationDAO, AdministrationDAO{
+public class Persistence implements RegistrationDAO, AdministrationDAO{
     
     private static final Logger LOGGER = Logger.getLogger(
                                               RegistrationBean.class.getName());
@@ -33,7 +33,7 @@ public class PersistenceDAO implements RegistrationDAO, AdministrationDAO{
         try {
                 FileHandler fileHandler = new FileHandler("%h/log.txt");
                 fileHandler.setFormatter(new SimpleFormatter());
-                PersistenceDAO.LOGGER.addHandler(fileHandler);
+                Persistence.LOGGER.addHandler(fileHandler);
             } catch (IOException ex) {
                 System.err.println(ex);
             } catch (SecurityException ex) {
@@ -109,7 +109,7 @@ public class PersistenceDAO implements RegistrationDAO, AdministrationDAO{
         applicant.setCompetence(competences);
         
         em.persist(applicant);
-        PersistenceDAO.LOGGER.log(Level.INFO, 
+        Persistence.LOGGER.log(Level.INFO, 
                 "Applicant stored in persistent context: " + applicant, this);
     }
 
@@ -135,7 +135,7 @@ public class PersistenceDAO implements RegistrationDAO, AdministrationDAO{
     public List<ApplicantDTO> getApplicants(ApplicantFilter filter) {
         List<ApplicantDTO> applicants 
                 = em.createQuery("select a from Applicant a").getResultList();
-        
+       
         if(filter != null){
             return filter.filter(applicants);
         }

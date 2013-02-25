@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
  * @author Joakim Borgström
  */
 @Entity
-@DiscriminatorValue("A")
+@DiscriminatorValue("2")
 public class Applicant extends Person implements Serializable, ApplicantDTO {
     private static final long serialVersionUID = 1L;
     
