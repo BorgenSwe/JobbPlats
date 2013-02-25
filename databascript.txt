@@ -17,7 +17,7 @@ create table groups(
 );
 create table users_groups (
 	groupid varchar(20) not null,
-	userid varchar(50) not null
+	userid varchar(255) not null
 );
 insert into groups values ('admin');
 insert into users_groups values ('admin', 'admin');
