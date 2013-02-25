@@ -20,7 +20,7 @@ import javax.persistence.Query;
  * during the registration of an application by a user.
  * @author Joakim Borgström
  */
-public class Persistence implements RegistrationDAO, AdministrationDAO{
+class Persistence implements RegistrationDAO, AdministrationDAO{
     
     private static final Logger LOGGER = Logger.getLogger(
                                               RegistrationBean.class.getName());
