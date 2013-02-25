@@ -7,7 +7,7 @@
         <h:outputStylesheet library="css" name="registration.css"/>
         <h:outputStylesheet library="css" name="header.css"/>
         <h:outputStylesheet library="css" name="footer.css"/>
-        <title>#{text.title} - #{text.success}</title>
+        <title>#{text.title} - #{text.error}</title>
     </h:head>
     <h:body>
         <div id="header">
@@ -19,8 +19,9 @@
         <div id="content">
             <h1>#{text.title}</h1>
             <div class="section" id="personInfo">
-                <h2>#{text.success}</h2>
-                <p>#{text.registrationSuccessful}</p>
+                <h2>#{text.error}</h2>
+                <p>#{text.registrationError}</p>
+                <a href="index.xhtml">#{text.tryAgain}</a>
             </div>
         </div>
         

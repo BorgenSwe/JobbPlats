@@ -7,6 +7,7 @@ function initValidation() {
     var availTest = /[0-9]{4}-[0-9]{2}-[0-9]{2}/g;
 
     $('.submitButton').click(function(e) {
+       $('.errorColumn').fadeOut();
        var surname = $('.surname').val()
        var fname = $('.name').val()
        var email = $('.email').val()
