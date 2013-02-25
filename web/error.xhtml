@@ -4,7 +4,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
-        <h:outputStylesheet library="css" name="registration.css"/>
+        <h:outputStylesheet library="css" name="global.css"/>
         <h:outputStylesheet library="css" name="header.css"/>
         <h:outputStylesheet library="css" name="footer.css"/>
         <title>#{text.title} - #{text.error}</title>
@@ -21,7 +21,7 @@
             <div class="section" id="personInfo">
                 <h2>#{text.error}</h2>
                 <p>#{text.registrationError}</p>
-                <a href="index.xhtml">#{text.tryAgain}</a>
+                <h:link value="#{text.tryAgain}" outcome="/index"/>
             </div>
         </div>
         

@@ -1,20 +1,59 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-    <head>
-        <title>TODO supply a title</title>
-    </head>
-    <body>
-        <form method="post" action="j_security_check">
-            <input type="text" name="j_username" />
-            <input type="password" name="j_password" />
-            <input type="submit" name="submit" value="Login" />
-        </form>
-    </body>
+    <h:head>
+        <h:outputStylesheet library="css" name="global.css"/>
+        <h:outputStylesheet library="css" name="header.css"/>
+        <h:outputStylesheet library="css" name="footer.css"/>
+        <style>
+            form {
+                padding: 10px 10px 0px 10px;
+            }
+            .loginElement {
+                margin-bottom: 10px;
+                text-align:left;
+            }
+            .loginElement label {
+                font-size:12px;
+            }
+        </style>
+        <title>#{text.adminLoginTitle}</title>
+    </h:head>
+    <h:body>
+        <div id="header">
+            <ui:insert name="header" >
+                <ui:include src="/header.xhtml" />
+            </ui:insert>
+        </div>
+        
+        <div id="content">
+            <h1>#{text.adminLoginTitle}</h1>
+            <div class="section">
+                <form method="POST" action="j_security_check">
+                    <div class="loginElement">
+                        <h:outputLabel for="j_username" value="#{text.adminLoginUsername}" /><br/>
+                        <input type="text" name="j_username"/>
+                    </div>
+                    
+                    <div class="loginElement">
+                        <h:outputLabel for="j_password" value="#{text.adminLoginPassword}" /><br/>
+                        <input type="password" name="j_password" />
+                    </div>
+                    
+                    <div class="loginElement">
+                        <input class="button" type="submit" value="Login" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div id="footer">
+            <ui:insert name="footer" >
+                <ui:include src="/footer.xhtml" />
+            </ui:insert>
+        </div>
+    </h:body>
 </html>
+
