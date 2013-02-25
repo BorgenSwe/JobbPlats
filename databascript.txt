@@ -11,3 +11,15 @@ insert into localization (localization_id, competence_for, word_language, word_t
 insert into localization (localization_id, competence_for, word_language, word_translation) values (6, 3, 'sv', 'Ballongbagare');
 insert into localization (localization_id, competence_for, word_language, word_translation) values (7, 4, 'en', 'Monster baker');
 insert into localization (localization_id, competence_for, word_language, word_translation) values (8, 4, 'sv', 'Monsterbagare');
+
+create table groups(
+	groupid varchar(20) not null
+);
+create table users_groups (
+	groupid varchar(20) not null,
+	userid varchar(50) not null
+);
+insert into groups values ('admin');
+insert into users_groups values ('admin', 'admin');
+
+insert into person (person_id, role_id, username, password) values(1, 1, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918');
