@@ -10,7 +10,7 @@ import javax.persistence.Entity;
  * @author Joakim Borgström
  */
 @Entity
-@DiscriminatorValue("R")
+@DiscriminatorValue("1")
 public class Recruiter extends Person implements Serializable, RecruiterDTO {
     private static final long serialVersionUID = 1L;
     

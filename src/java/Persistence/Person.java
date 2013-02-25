@@ -22,8 +22,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Person")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="TYPE", discriminatorType=DiscriminatorType.STRING,length=20)
-@DiscriminatorValue("P")
+@DiscriminatorColumn(name="role_id", discriminatorType=DiscriminatorType.INTEGER)
+@DiscriminatorValue("0")
 public class Person implements PersonDTO, Serializable {
     /**
      * Id of the person
