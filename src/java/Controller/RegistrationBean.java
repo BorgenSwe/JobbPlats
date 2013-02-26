@@ -100,18 +100,6 @@ public class RegistrationBean {
                     new View.AvailabilityDTOImpl[newAvails.size()]));
             
             persistence.register(registration);
-        } catch (InvalidCompetenceException ex) {
-            RegistrationBean.LOGGER.log(Level.SEVERE, ex.toString());
-            return "failure";
-        } catch (NoAvailabilityException ex) {
-            RegistrationBean.LOGGER.log(Level.SEVERE, ex.toString());
-            return "failure";
-        } catch (RegistrationNotValidException ex) {
-           RegistrationBean.LOGGER.log(Level.SEVERE, ex.toString());
-            return "failure";
-        } catch (InvalidAvailabilityException ex) {
-            RegistrationBean.LOGGER.log(Level.SEVERE, ex.toString());
-            return "failure";
         } catch(Exception ex) {
             RegistrationBean.LOGGER.log(Level.SEVERE, ex.toString());
             return "failure";
