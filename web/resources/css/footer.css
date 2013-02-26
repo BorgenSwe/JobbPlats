@@ -5,7 +5,16 @@
     Description:
         Purpose of the stylesheet follows.
 */
-
+hr {
+    border:0px;
+    color: white;
+    background-color: white;
+    opacity:0.5;
+    height: 2px;
+    margin-bottom:15px;
+    margin-left:5%;
+    width:90%;
+}
 #contact { 
     font-family: Arial;
     font-size:11px;

@@ -1,0 +1,21 @@
+/* 
+    Document   : admin
+    Created on : Feb 26, 2013, 10:02:38 AM
+    Author     : Jonas
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#content {
+    width:600px;
+}
+
+th {
+    cursor:pointer;
+    text-align:left;
+}
+
+#logoutForm {
+    float:left;
+    font-size:12px;
+}
