@@ -14,7 +14,33 @@ th {
     cursor:pointer;
     text-align:left;
 }
-
+.applicantRow {
+    cursor:pointer;
+}
+.hidden {
+    display:none;
+}
+h3 {
+    font-size: 16px;
+    margin:10px 0px 0px 15px;
+}
+#selectedInfo {
+    margin-left:25px;
+    margin-top:-5px;
+    font-size:14px;
+}
+.listColumn {
+    display:inline-block;
+    width:45%;
+    margin:10px 10px 0px 10px;
+    background:rgba(255,255,255,0.4);
+    box-shadow: 0px 0px 3px #888888;
+    text-align:left;
+}
+.listColumn ul {
+    margin-left: -18px;
+    margin-top:5px;
+}
 #logoutForm {
     float:left;
     font-size:12px;
