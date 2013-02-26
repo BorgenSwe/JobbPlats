@@ -12,7 +12,7 @@
         <title>#{text.adminTitle}</title>
     </h:head>
     <h:body>
-        <h:form id="logoutForm"><h:commandLink action="#{bönor.logout}" value="#{text.adminLogout}"/></h:form>
+        <h:form id="logoutForm"><h:commandLink action="#{securityManager.logout}" value="#{text.adminLogout}"/></h:form>
             <div id="header">
                 <ui:insert name="header" >
                     <ui:include src="/header.xhtml" />
