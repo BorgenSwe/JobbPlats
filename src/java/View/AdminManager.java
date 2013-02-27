@@ -40,6 +40,7 @@ public class AdminManager {
     }
     
     public List<ApplicantDTO> getApplicants() {
+        applicants.get(0).getName();
         return applicants;
     }
 }

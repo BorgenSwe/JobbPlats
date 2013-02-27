@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:c="http://java.sun.com/jsp/jstl/core">
     <h:head>
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -25,10 +26,6 @@
                 <h1>#{text.adminTitle}</h1>
 
                 <div class="section">
-                    Filter
-                </div>
-
-                <div class="section">
                     <table class="sortable">
                         <thead>
                             <tr>
@@ -41,20 +38,23 @@
                         <tbody>
                             <c:forEach var="applicant" items="#{adminManager.applicants}">
                                 <tr class="applicantRow">
-                                    <td class="name">#{applicant.email}</td>
+                                    <td class="name">#{applicant.name} #{applicant.surname}</td>
                                     <td class="ssn">#{applicant.ssn}</td>
                                     <td class="email">#{applicant.email}</td>
                                     <td class="competence hidden">
                                         <ul>
                                             <c:forEach var="competence" items="#{applicant.competenceDTO}">
-                                                <li>bög</li>
+                                                <li>#{competence.competenceType.name} - #{competence.years} #{text.years}</li>
                                             </c:forEach>
                                         </ul>
                                     </td>
                                     <td class="availability hidden">
                                         <ul>
                                             <c:forEach var="availability" items="#{applicant.availabilityDTO}">
-                                                <li>1789-07-14 - 1799-12-31</li>
+                                                <li>
+                                                    <h:outputText value="#{availability.datefrom}" ><f:convertDateTime pattern="yyyy-MM-dd" /></h:outputText> - 
+                                                    <h:outputText value="#{availability.dateto}" ><f:convertDateTime pattern="yyyy-MM-dd" /></h:outputText>
+                                                </li> 
                                             </c:forEach>
                                         </ul>
                                     </td>

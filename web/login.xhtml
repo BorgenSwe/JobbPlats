@@ -18,6 +18,12 @@
             .loginElement label {
                 font-size:12px;
             }
+            #back {
+                text-align:center;
+                font-size:12px;
+                margin-top:10px;
+                margin-bottom:-10px;
+            }
         </style>
         <title>#{text.adminLoginTitle}</title>
     </h:head>
@@ -47,6 +53,7 @@
                     </div>
                 </form>
             </div>
+            <div id="back"><h:link value="#{text.back}" outcome="/index"/></div>
         </div>
         
         <div id="footer">
