@@ -17,6 +17,8 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 import javax.inject.Inject;
 
 /**
@@ -26,6 +28,7 @@ import javax.inject.Inject;
  * @author 573w3
  */
 @Stateless
+@TransactionManagement(TransactionManagementType.CONTAINER)
 public class RegistrationBean {
     
     private static final Logger LOGGER = Logger.getLogger(
