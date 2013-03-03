@@ -9,6 +9,8 @@ import Persistence.ApplicantDTO;
 import Persistence.ApplicantFilter;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 import javax.inject.Inject;
 
 /**
@@ -16,6 +18,7 @@ import javax.inject.Inject;
  * @author 573w3
  */
 @Stateless
+@TransactionManagement(TransactionManagementType.CONTAINER)
 public class AdminBean {
     
     @Inject
