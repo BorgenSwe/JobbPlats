@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Controller;
 
 import java.io.IOException;
@@ -15,7 +12,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- *
+ * Handles the logic to log out users. 
  * @author 573w3
  */
 @Stateless
@@ -37,6 +34,10 @@ public class SecurityBean {
             }
     }
 
+    /**
+     * Logs out a logged in user. 
+     * @return if the operation was successful or not
+     */
     public String logout() {
         String result = "/admin/admin?faces-redirect=true";
         

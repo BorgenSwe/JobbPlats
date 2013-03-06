@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Controller;
 
 import Persistence.AdministrationDAO;
@@ -14,7 +11,7 @@ import javax.ejb.TransactionManagementType;
 import javax.inject.Inject;
 
 /**
- *
+ * Business logic for the AdminManager
  * @author 573w3
  */
 @Stateless
@@ -24,6 +21,11 @@ public class AdminBean {
     @Inject
     private AdministrationDAO persistence;
     
+    /**
+     * Retrieves a list of applicants filtered by the filter
+     * @param filter Optional filtering of applicants
+     * @return list of applicants
+     */
     public List<ApplicantDTO> getApplicants(ApplicantFilter filter) {
         return persistence.getApplicants(filter);
     }

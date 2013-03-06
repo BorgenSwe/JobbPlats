@@ -13,6 +13,13 @@ import javax.faces.convert.Converter;
  */
 public class ListConverter implements Converter {
 
+    /**
+     * Retrieves the Object representation of a CompetenceDTO
+     * @param context FacesContext
+     * @param component UIComponent
+     * @param value String representation of the Object
+     * @return Object representation
+     */
     @Override
     public Object getAsObject(FacesContext context, 
                                         UIComponent component, String value) {
@@ -31,6 +38,13 @@ public class ListConverter implements Converter {
         return null;
     }
 
+    /**
+     * Retrieves the String representation of a CompetenceDTO
+     * @param context FacesContext
+     * @param component UIComponent
+     * @param value Object that is being parsed as String
+     * @return String representation
+     */
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
         return ((CompetenceDTO)value).getName();

@@ -2,10 +2,7 @@
 package Controller;
 
 import Persistence.CompetenceDTO;
-import Persistence.InvalidCompetenceException;
-import Persistence.NoAvailabilityException;
 import Persistence.RegistrationDAO;
-import Persistence.RegistrationNotValidException;
 import View.AvailabilityDTOImpl;
 import View.RegistrationDTOImpl;
 import java.io.IOException;
@@ -60,7 +57,7 @@ public class RegistrationBean {
     
     /**
      * Registers a job application 
-     * @param registration 
+     * @param registration to register
      */
     public String register(RegistrationDTOImpl registration) {
         if (registration.getSsn().length() == 13) {

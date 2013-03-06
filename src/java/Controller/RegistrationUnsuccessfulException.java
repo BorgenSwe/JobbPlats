@@ -2,7 +2,7 @@
 package Controller;
 
 /**
- *
+ * Thrown in case a registration could not be registered in the database
  * @author Joakim
  */
 public class RegistrationUnsuccessfulException extends Exception {

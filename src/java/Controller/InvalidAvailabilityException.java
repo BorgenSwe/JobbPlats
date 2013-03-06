@@ -1,11 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Controller;
 
 /**
- *
+ * Thrown if an availability was invalid. 
  * @author 573w3
  */
 public class InvalidAvailabilityException extends Exception {

@@ -7,8 +7,8 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 
 /**
- * DTO used for holding a given competence profile coming from the view going 
- * down towards the persistence layer. 
+ * Implementation of the CompetenceProfileDTO. Meant to hold competences that are
+ * stored in a registration 
  * @author 573w3
  */
 public class CompetenceProfileDTOImpl implements CompetenceProfileDTO {
@@ -19,6 +19,9 @@ public class CompetenceProfileDTOImpl implements CompetenceProfileDTO {
     @Digits(integer=3, fraction=2)
     private float years;
     
+    /**
+     * Creates a new instance of CompetenceProfileDTOImpl
+     */
     public CompetenceProfileDTOImpl(){
         years = 0;
     }

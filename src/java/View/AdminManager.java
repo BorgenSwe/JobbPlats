@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
 import Controller.AdminBean;
@@ -36,9 +32,12 @@ public class AdminManager {
     @PostConstruct
     void init() {
         applicants = adminBean.getApplicants(null);
-        //FacesContext.getCurrentInstance().getExternalContext().getSession(true);
     }
     
+    /**
+     * Asks the EJB to fetch a list of applicants
+     * @return a list of all applicants
+     */
     public List<ApplicantDTO> getApplicants() {
         applicants.get(0).getName();
         return applicants;

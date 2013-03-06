@@ -7,7 +7,8 @@ import java.util.Date;
 import javax.validation.constraints.Pattern;
 
 /**
- *
+ * Implementation of the AvailabilityDTO. Meant to hold availabilities that are
+ * stored in a registration
  * @author Jonas
  */
 public class AvailabilityDTOImpl implements AvailabilityDTO {
@@ -20,16 +21,12 @@ public class AvailabilityDTOImpl implements AvailabilityDTO {
     private String stringFrom;
     
     private Date parseDate(String str) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        // Gör så att det måste vara exakt det angivna formatet
-        //format.setLenient(false); 
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd"); 
         
         try {
             Date date = format.parse(str);
             return date != null ? date : null;
-        } catch (ParseException ex) {
-            
-        }
+        } catch (ParseException ex) {}
         return null;
     }
 

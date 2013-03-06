@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package View;
 
 import Controller.SecurityBean;
@@ -11,7 +8,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 /**
- *
+ * Uses an EJB to log out a logged in user
  * @author 573w3
  */
 @Named(value = "securityManager")
